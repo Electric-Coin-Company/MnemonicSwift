@@ -1,6 +1,6 @@
  Pod::Spec.new do |s|
   s.name         = "MnemonicKit"
-  s.version      = "1.3.10"
+  s.version      = "2.0.0"
   s.summary      = "MnemonicKit provides a Swift implementation of BIP39"
   s.description  = <<-DESC
   MnemonicKit provides a Swift implementation of BIP39.
@@ -10,7 +10,8 @@
 
   s.homepage     = "https://github.com/keefertaylor/MnemonicKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.author             = { "Keefer Taylor" => "keefer@keefertaylor.com" }
+  s.author             = { "Keefer Taylor" => "keefer@keefertaylor.com",
+                           "Francisco Gindre" => "francisco.gindre@gmail.com" }
   s.source       = { :git => "https://github.com/keefertaylor/MnemonicKit.git", :tag => "1.3.10" }
   s.source_files  = "MnemonicKit/**/*.swift",
   s.swift_version = "5.1"
