@@ -1,6 +1,4 @@
 // Copyright Keefer Taylor, 2018
-
-import CryptoSwift
 import Foundation
 
 public extension UInt8 {
@@ -24,9 +22,18 @@ public extension UInt8 {
 public extension Data {
   func toBitArray() -> [String] {
     var toReturn = [String]()
-    for num: UInt8 in bytes {
+    for num in [UInt8](self) {
       toReturn.append(contentsOf: num.mnemonicBits())
     }
     return toReturn
   }
+}
+public extension Array where Element == UInt8 {
+    func toBitArray() -> [String] {
+      var toReturn = [String]()
+      for num in self {
+        toReturn.append(contentsOf: num.mnemonicBits())
+      }
+      return toReturn
+    }
 }

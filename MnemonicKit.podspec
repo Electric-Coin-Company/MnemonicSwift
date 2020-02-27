@@ -13,12 +13,11 @@
   s.author             = { "Keefer Taylor" => "keefer@keefertaylor.com" }
   s.source       = { :git => "https://github.com/keefertaylor/MnemonicKit.git", :tag => "1.3.10" }
   s.source_files  = "MnemonicKit/**/*.swift",
-  s.swift_version = "4.2"
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.10"
+  s.swift_version = "5.1"
+  s.ios.deployment_target = "13.0"
+  s.osx.deployment_target = "10.15"
 
-  s.dependency "CryptoSwift", "~> 0.14.0"
-
+  s.framework = "CryptoKit"
   s.test_spec "Tests" do |test_spec|
     test_spec.source_files = "Tests/*.swift"
     test_spec.resources = ["Tests/*.json"]
