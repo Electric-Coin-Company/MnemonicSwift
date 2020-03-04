@@ -93,7 +93,7 @@ public enum Mnemonic {
 
     let count = strength / 8
     let bytes = [UInt8](repeating: 0, count: count)
-    guard SecRandomCopyBytes(kSecRandomDefault, count, UnsafeMutablePointer<UInt8>(mutating: bytes)) != -1 else {
+    guard SecRandomCopyBytes(kSecRandomDefault, count, UnsafeMutablePointer<UInt8>(mutating: bytes)) == errSecStatus else {
       return nil
     }
     let data = Data(bytes)
