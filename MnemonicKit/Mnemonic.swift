@@ -49,6 +49,7 @@ public enum Mnemonic {
         return mnemonic.joined(separator: " ")
     }
 
+    
     /// Generate a deterministic seed string from the given inputs.
     ///
     /// - Parameters:
@@ -62,6 +63,15 @@ public enum Mnemonic {
         passphrase: String = "",
         language _: MnemonicLanguageType = .english
     ) -> String? {
+        deterministicSeedBytes(from: mnemonic)?.hexString
+    }
+    
+    public static func deterministicSeedBytes(
+        from mnemonic: String,
+        iterations: Int = 2_048,
+        passphrase: String = "",
+        language _: MnemonicLanguageType = .english
+    ) -> [UInt8]? {
         guard self.validate(mnemonic: mnemonic),
             let normalizedData = self.normalized(string: mnemonic),
             let saltData = normalized(string: "mnemonic" + passphrase) else {
@@ -73,7 +83,7 @@ public enum Mnemonic {
         do {
             let bytes =
                 try PKCS5.PBKDF2SHA512(password: passwordBytes, salt: [UInt8](saltData), iterations: iterations)
-            return bytes.hexString
+            return bytes
         } catch {
             return nil
         }
