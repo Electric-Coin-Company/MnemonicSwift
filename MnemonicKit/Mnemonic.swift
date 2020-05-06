@@ -49,7 +49,6 @@ public enum Mnemonic {
         return mnemonic.joined(separator: " ")
     }
 
-    
     /// Generate a deterministic seed string from the given inputs.
     ///
     /// - Parameters:
@@ -61,16 +60,16 @@ public enum Mnemonic {
         from mnemonic: String,
         iterations: Int = 2_048,
         passphrase: String = "",
-        language _: MnemonicLanguageType = .english
+        language: MnemonicLanguageType = .english
     ) -> String? {
-        deterministicSeedBytes(from: mnemonic)?.hexString
+        deterministicSeedBytes(from: mnemonic, iterations: iterations, passphrase: passphrase, language: language)?.hexString
     }
-    
+
     public static func deterministicSeedBytes(
         from mnemonic: String,
         iterations: Int = 2_048,
         passphrase: String = "",
-        language _: MnemonicLanguageType = .english
+        language: MnemonicLanguageType = .english
     ) -> [UInt8]? {
         guard self.validate(mnemonic: mnemonic),
             let normalizedData = self.normalized(string: mnemonic),
