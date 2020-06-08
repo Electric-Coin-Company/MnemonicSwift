@@ -1,5 +1,5 @@
 # .slather.yml
 
 coverage_service: cobertura_xml
-xcodeproj: MnemonicKit.xcodeproj
-scheme: MnemonicKit_iOS
+xcodeproj: MnemonicSwift.xcodeproj
+scheme: MnemonicSwift_iOS

@@ -1,26 +1,16 @@
-# MnemonicKit
-[![Build Status](https://travis-ci.org/keefertaylor/MnemonicKit.svg?branch=master)](https://travis-ci.org/keefertaylor/MnemonicKit)
-[![codecov](https://codecov.io/gh/keefertaylor/MnemonicKit/branch/master/graph/badge.svg)](https://codecov.io/gh/keefertaylor/MnemonicKit)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Version](https://img.shields.io/cocoapods/v/MnemonicKit.svg?style=flat)](http://cocoapods.org/pods/MnemonicKit)
-[![License](https://img.shields.io/cocoapods/l/MnemonicKit.svg?style=flat)](http://cocoapods.org/pods/MnemonicKit)
+# MnemonicSwift
 
-An implementation of BIP39 in Swift. MnemonicKit supports both English and Chinese mnemonics.
+An implementation of BIP39 in Swift. MnemonicSwift supports both English and Chinese mnemonics.
 
-This library is a fork of [CKMnemonic](https://github.com/CikeQiu/CKMnemonic). This fork provides several conveniences over the original library, namely:
-- Converting throwing APIs to non-throwing nullable APIs
-- Additional helper methods
-- Code clarity and documentation
-- Additional Testing
-- Support on OSX
+This library is a fork of [MnemonicKit](https://github.com/keefertaylor/MnemonicKit). This fork provides provides support for BIP39 using CryptoKit.
 
 ## Installation
 
 ### CocoaPods
-TezosKit supports installation via CocoaPods. You can depened on MnemonicKit by adding the following to your Podfile:
+MnemonicSwift supports installation via CocoaPods. You can depened on MnemonicKit by adding the following to your Podfile:
 
 ```
-pod "MnemonicKit"
+pod "MnemonicSwift"
 ```
 
 #### Carthage
@@ -29,11 +19,8 @@ If you use [Carthage](https://github.com/Carthage/Carthage) to manage your depen
 MnemonicKit to your `Cartfile`:
 
 ```
-github "keefertaylor/MnemonicKit"
+github "zcash-hackworks/MnemonicSwift"
 ```
-
-If you use Carthage to build your dependencies, make sure you have added `CryptoSwift.framework` to the "_Linked Frameworks and Libraries_" section of your target, and have included them in your Carthage framework copying build phase.
-
 
 ## Usage
 
@@ -66,7 +53,6 @@ If you use Carthage to build your dependencies, make sure you have added `Crypto
 
 ## Contributions
 
-I am happy to accept pull requests.
 
 To get set up:
 ```shell

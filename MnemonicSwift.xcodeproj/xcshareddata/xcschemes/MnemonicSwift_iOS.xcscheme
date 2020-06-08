@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1150"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
-               BuildableName = "MnemonicKit.framework"
-               BlueprintName = "MnemonicKit_macOS"
-               ReferencedContainer = "container:MnemonicKit.xcodeproj">
+               BlueprintIdentifier = "3965BB285FF94319B8863435"
+               BuildableName = "MnemonicSwift.framework"
+               BlueprintName = "MnemonicSwift_iOS"
+               ReferencedContainer = "container:MnemonicSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,32 +26,19 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "NO"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C3E5C33EDE0FF1268354BCC"
-               BuildableName = "MnemonicKitTests.xctest"
-               BlueprintName = "MnemonicKitTests_macOS"
-               ReferencedContainer = "container:MnemonicKit.xcodeproj">
+               BlueprintIdentifier = "D57DFC1DDD9E99A6F84A0A0B"
+               BuildableName = "MnemonicSwiftTests.xctest"
+               BlueprintName = "MnemonicSwiftTests_iOS"
+               ReferencedContainer = "container:MnemonicSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
-            BuildableName = "MnemonicKit.framework"
-            BlueprintName = "MnemonicKit_macOS"
-            ReferencedContainer = "container:MnemonicKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -63,17 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
-            BuildableName = "MnemonicKit.framework"
-            BlueprintName = "MnemonicKit_macOS"
-            ReferencedContainer = "container:MnemonicKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -81,18 +57,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
-            BuildableName = "MnemonicKit.framework"
-            BlueprintName = "MnemonicKit_macOS"
-            ReferencedContainer = "container:MnemonicKit.xcodeproj">
+            BlueprintIdentifier = "3965BB285FF94319B8863435"
+            BuildableName = "MnemonicSwift.framework"
+            BlueprintName = "MnemonicSwift_iOS"
+            ReferencedContainer = "container:MnemonicSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

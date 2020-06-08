@@ -10,21 +10,21 @@
 		0DDAF3A42408728600EA9427 /* PKC5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAF3A32408728600EA9427 /* PKC5.swift */; };
 		0DDAF3A52408728600EA9427 /* PKC5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAF3A32408728600EA9427 /* PKC5.swift */; };
 		122777029525BA9CC4F9A958 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9024EB02AB18E1F44789A /* Mnemonic.swift */; };
-		2A51344C2F30A6CE1A391BCF /* MnemonicKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicKitTests.swift */; };
+		2A51344C2F30A6CE1A391BCF /* MnemonicSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */; };
 		422A84796316566997821D77 /* vectors.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E5287598681E0527694214 /* vectors.json */; };
 		81D18E658D26212E4D7647D8 /* String+MnemonicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */; };
-		8DC3D3DA23DBEAD93257DE4F /* MnemonicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7EE929BD11BA8AB38F9C19 /* MnemonicKit.framework */; };
+		8DC3D3DA23DBEAD93257DE4F /* MnemonicSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */; };
 		8EAFFDA8F2A30674EA9EBBBC /* Data+BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D9394FFD7755F40E53D60E /* Data+BitArray.swift */; };
 		934F1409AF864AAA0AB52FDA /* English.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F81AB601CF04F3F1E52E3 /* English.swift */; };
 		9374718ABBF77ACE41A92B18 /* String+MnemonicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */; };
-		985214FD923DB7C6DDBA36EF /* MnemonicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCB97C4881969FDB72C61DB /* MnemonicKit.framework */; };
+		985214FD923DB7C6DDBA36EF /* MnemonicSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */; };
 		996B7163A0786EC88C945C9F /* Chinese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E025936BA30D49D80AF51 /* Chinese.swift */; };
 		9F5C224B0A7ABD402C36789D /* vectors.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E5287598681E0527694214 /* vectors.json */; };
-		A97A6915A00646DDB2DE7A43 /* MnemonicKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicKitTests.swift */; };
-		B864B2990BD5ADDBF0E0C457 /* MnemonicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC7EE929BD11BA8AB38F9C19 /* MnemonicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A97A6915A00646DDB2DE7A43 /* MnemonicSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */; };
+		B864B2990BD5ADDBF0E0C457 /* MnemonicSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3A836752BC9FC7C89A398C5 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9024EB02AB18E1F44789A /* Mnemonic.swift */; };
 		D04ECC70FD2144C467D7E779 /* Chinese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E025936BA30D49D80AF51 /* Chinese.swift */; };
-		D19F314EA0DA8AC42C1A668A /* MnemonicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCB97C4881969FDB72C61DB /* MnemonicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D19F314EA0DA8AC42C1A668A /* MnemonicSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4460C3982D7B9A90D99C790 /* English.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F81AB601CF04F3F1E52E3 /* English.swift */; };
 		EFBEB3B343A9FDDD7B67FF88 /* Data+BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D9394FFD7755F40E53D60E /* Data+BitArray.swift */; };
 /* End PBXBuildFile section */
@@ -53,7 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D19F314EA0DA8AC42C1A668A /* MnemonicKit.framework in Embed Frameworks */,
+				D19F314EA0DA8AC42C1A668A /* MnemonicSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B864B2990BD5ADDBF0E0C457 /* MnemonicKit.framework in Embed Frameworks */,
+				B864B2990BD5ADDBF0E0C457 /* MnemonicSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,19 +73,19 @@
 
 /* Begin PBXFileReference section */
 		0A5E025936BA30D49D80AF51 /* Chinese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chinese.swift; sourceTree = "<group>"; };
-		0A5EC633D7524CD344B44513 /* MnemonicKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicKitTests.swift; sourceTree = "<group>"; };
+		0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicSwiftTests.swift; sourceTree = "<group>"; };
+		0DAE92E7248EDE9700067A0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DDAF3A32408728600EA9427 /* PKC5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKC5.swift; sourceTree = "<group>"; };
 		12B9024EB02AB18E1F44789A /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
-		1645FE576891F45DC72864F6 /* MnemonicKitTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MnemonicKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1645FE576891F45DC72864F6 /* MnemonicSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MnemonicSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D6F81AB601CF04F3F1E52E3 /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
 		23F75813C686C37B78DE459E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MnemonicData.swift"; sourceTree = "<group>"; };
-		65B1627123A1131289B4110A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DCB97C4881969FDB72C61DB /* MnemonicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MnemonicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MnemonicSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E5287598681E0527694214 /* vectors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vectors.json; sourceTree = "<group>"; };
 		D2D9394FFD7755F40E53D60E /* Data+BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+BitArray.swift"; sourceTree = "<group>"; };
-		DC7EE929BD11BA8AB38F9C19 /* MnemonicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MnemonicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBA32888ED203FE1DA16BFF1 /* MnemonicKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MnemonicKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MnemonicSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBA32888ED203FE1DA16BFF1 /* MnemonicSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MnemonicSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DC3D3DA23DBEAD93257DE4F /* MnemonicKit.framework in Frameworks */,
+				8DC3D3DA23DBEAD93257DE4F /* MnemonicSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				985214FD923DB7C6DDBA36EF /* MnemonicKit.framework in Frameworks */,
+				985214FD923DB7C6DDBA36EF /* MnemonicSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +138,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		97DC747238496A6B60B25A54 /* MnemonicKit */ = {
+		97DC747238496A6B60B25A54 /* MnemonicSwift */ = {
 			isa = PBXGroup;
 			children = (
+				0DAE92E7248EDE9700067A0B /* Info.plist */,
 				D2D9394FFD7755F40E53D60E /* Data+BitArray.swift */,
-				65B1627123A1131289B4110A /* Info.plist */,
 				12B9024EB02AB18E1F44789A /* Mnemonic.swift */,
 				256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */,
 				07836B522CFA5AB2F61C4F9F /* Language */,
 				0DDAF3A32408728600EA9427 /* PKC5.swift */,
 			);
-			path = MnemonicKit;
+			path = MnemonicSwift;
 			sourceTree = "<group>";
 		};
 		A44468790B8FFF397004AD5A = {
 			isa = PBXGroup;
 			children = (
-				97DC747238496A6B60B25A54 /* MnemonicKit */,
+				97DC747238496A6B60B25A54 /* MnemonicSwift */,
 				CBCDA5914B8679B57A496D9A /* Tests */,
 				94419657BA42870BB94E69C6 /* Frameworks */,
 				F594483C8CF3AB38A366C29A /* Products */,
@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				23F75813C686C37B78DE459E /* Info.plist */,
-				0A5EC633D7524CD344B44513 /* MnemonicKitTests.swift */,
+				0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */,
 				C3E5287598681E0527694214 /* vectors.json */,
 			);
 			path = Tests;
@@ -174,10 +174,10 @@
 		F594483C8CF3AB38A366C29A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7DCB97C4881969FDB72C61DB /* MnemonicKit.framework */,
-				DC7EE929BD11BA8AB38F9C19 /* MnemonicKit.framework */,
-				1645FE576891F45DC72864F6 /* MnemonicKitTests.xctest */,
-				EBA32888ED203FE1DA16BFF1 /* MnemonicKitTests.xctest */,
+				7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */,
+				DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */,
+				1645FE576891F45DC72864F6 /* MnemonicSwiftTests.xctest */,
+				EBA32888ED203FE1DA16BFF1 /* MnemonicSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3965BB285FF94319B8863435 /* MnemonicKit_iOS */ = {
+		3965BB285FF94319B8863435 /* MnemonicSwift_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73E41074CEDAECD9E168B6DD /* Build configuration list for PBXNativeTarget "MnemonicKit_iOS" */;
+			buildConfigurationList = 73E41074CEDAECD9E168B6DD /* Build configuration list for PBXNativeTarget "MnemonicSwift_iOS" */;
 			buildPhases = (
 				4F711825F933470F9C94DD9C /* Sources */,
 				992C7E7D41706D89AF40F3B0 /* SwiftLint */,
@@ -197,14 +197,14 @@
 			);
 			dependencies = (
 			);
-			name = MnemonicKit_iOS;
+			name = MnemonicSwift_iOS;
 			productName = MnemonicKit_iOS;
-			productReference = 7DCB97C4881969FDB72C61DB /* MnemonicKit.framework */;
+			productReference = 7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3A14B55BA3F3716B46D8CA3F /* MnemonicKit_macOS */ = {
+		3A14B55BA3F3716B46D8CA3F /* MnemonicSwift_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62BA42CDC509E0E29733C6B8 /* Build configuration list for PBXNativeTarget "MnemonicKit_macOS" */;
+			buildConfigurationList = 62BA42CDC509E0E29733C6B8 /* Build configuration list for PBXNativeTarget "MnemonicSwift_macOS" */;
 			buildPhases = (
 				2C0E149615775A82FF02CAA4 /* Sources */,
 				E8B531151B3FAE302CDA4BEF /* SwiftLint */,
@@ -214,14 +214,14 @@
 			);
 			dependencies = (
 			);
-			name = MnemonicKit_macOS;
+			name = MnemonicSwift_macOS;
 			productName = MnemonicKit_macOS;
-			productReference = DC7EE929BD11BA8AB38F9C19 /* MnemonicKit.framework */;
+			productReference = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6C3E5C33EDE0FF1268354BCC /* MnemonicKitTests_macOS */ = {
+		6C3E5C33EDE0FF1268354BCC /* MnemonicSwiftTests_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F8727B9B5CF1651B5236875 /* Build configuration list for PBXNativeTarget "MnemonicKitTests_macOS" */;
+			buildConfigurationList = 9F8727B9B5CF1651B5236875 /* Build configuration list for PBXNativeTarget "MnemonicSwiftTests_macOS" */;
 			buildPhases = (
 				B0AA85BF818C04388DE9D717 /* Sources */,
 				A8D30C78D6566290AEC31F1D /* Resources */,
@@ -233,14 +233,14 @@
 			dependencies = (
 				E436535C8686E9FC14FFB6D2 /* PBXTargetDependency */,
 			);
-			name = MnemonicKitTests_macOS;
+			name = MnemonicSwiftTests_macOS;
 			productName = MnemonicKitTests_macOS;
-			productReference = EBA32888ED203FE1DA16BFF1 /* MnemonicKitTests.xctest */;
+			productReference = EBA32888ED203FE1DA16BFF1 /* MnemonicSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D57DFC1DDD9E99A6F84A0A0B /* MnemonicKitTests_iOS */ = {
+		D57DFC1DDD9E99A6F84A0A0B /* MnemonicSwiftTests_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D81EB8096D3E6550D6B8607 /* Build configuration list for PBXNativeTarget "MnemonicKitTests_iOS" */;
+			buildConfigurationList = 8D81EB8096D3E6550D6B8607 /* Build configuration list for PBXNativeTarget "MnemonicSwiftTests_iOS" */;
 			buildPhases = (
 				889B548685EC4F2922804A67 /* Sources */,
 				49BE9E9637BD50833B67C46A /* Resources */,
@@ -252,9 +252,9 @@
 			dependencies = (
 				33E8B97F445A81D3D3B6D0B7 /* PBXTargetDependency */,
 			);
-			name = MnemonicKitTests_iOS;
+			name = MnemonicSwiftTests_iOS;
 			productName = MnemonicKitTests_iOS;
-			productReference = 1645FE576891F45DC72864F6 /* MnemonicKitTests.xctest */;
+			productReference = 1645FE576891F45DC72864F6 /* MnemonicSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +265,7 @@
 			attributes = {
 				LastUpgradeCheck = 1020;
 			};
-			buildConfigurationList = F5079FB8BED8C51BDEEB8C7C /* Build configuration list for PBXProject "MnemonicKit" */;
+			buildConfigurationList = F5079FB8BED8C51BDEEB8C7C /* Build configuration list for PBXProject "MnemonicSwift" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -277,10 +277,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D57DFC1DDD9E99A6F84A0A0B /* MnemonicKitTests_iOS */,
-				6C3E5C33EDE0FF1268354BCC /* MnemonicKitTests_macOS */,
-				3965BB285FF94319B8863435 /* MnemonicKit_iOS */,
-				3A14B55BA3F3716B46D8CA3F /* MnemonicKit_macOS */,
+				D57DFC1DDD9E99A6F84A0A0B /* MnemonicSwiftTests_iOS */,
+				6C3E5C33EDE0FF1268354BCC /* MnemonicSwiftTests_macOS */,
+				3965BB285FF94319B8863435 /* MnemonicSwift_iOS */,
+				3A14B55BA3F3716B46D8CA3F /* MnemonicSwift_macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -339,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint autocorrect --config .swiftlint.yml";
+			shellScript = "swiftlint autocorrect --config .swiftlint.yml\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -374,7 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A51344C2F30A6CE1A391BCF /* MnemonicKitTests.swift in Sources */,
+				2A51344C2F30A6CE1A391BCF /* MnemonicSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97A6915A00646DDB2DE7A43 /* MnemonicKitTests.swift in Sources */,
+				A97A6915A00646DDB2DE7A43 /* MnemonicSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,12 +391,12 @@
 /* Begin PBXTargetDependency section */
 		33E8B97F445A81D3D3B6D0B7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3965BB285FF94319B8863435 /* MnemonicKit_iOS */;
+			target = 3965BB285FF94319B8863435 /* MnemonicSwift_iOS */;
 			targetProxy = 46865FC6D9A3FACCE969B392 /* PBXContainerItemProxy */;
 		};
 		E436535C8686E9FC14FFB6D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3A14B55BA3F3716B46D8CA3F /* MnemonicKit_macOS */;
+			target = 3A14B55BA3F3716B46D8CA3F /* MnemonicSwift_macOS */;
 			targetProxy = D9A6EBA04CB47D7F58AE52BE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -415,15 +415,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MnemonicKit/Info.plist;
+				INFOPLIST_FILE = MnemonicSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKit-iOS";
-				PRODUCT_NAME = MnemonicKit;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-iOS";
+				PRODUCT_NAME = MnemonicSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -445,15 +445,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = MnemonicKit/Info.plist;
+				INFOPLIST_FILE = MnemonicSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKit-macOS";
-				PRODUCT_NAME = MnemonicKit;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-macOS";
+				PRODUCT_NAME = MnemonicSwift;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -474,15 +474,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = MnemonicKit/Info.plist;
+				INFOPLIST_FILE = MnemonicSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKit-macOS";
-				PRODUCT_NAME = MnemonicKit;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-macOS";
+				PRODUCT_NAME = MnemonicSwift;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -503,8 +503,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKitTests-iOS";
-				PRODUCT_NAME = MnemonicKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-iOS";
+				PRODUCT_NAME = MnemonicSwiftTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -525,8 +525,8 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKitTests-macOS";
-				PRODUCT_NAME = MnemonicKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-macOS";
+				PRODUCT_NAME = MnemonicSwiftTests;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -544,15 +544,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MnemonicKit/Info.plist;
+				INFOPLIST_FILE = MnemonicSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKit-iOS";
-				PRODUCT_NAME = MnemonicKit;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-iOS";
+				PRODUCT_NAME = MnemonicSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -575,8 +575,8 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKitTests-macOS";
-				PRODUCT_NAME = MnemonicKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-macOS";
+				PRODUCT_NAME = MnemonicSwiftTests;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -624,12 +624,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -686,12 +688,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -715,8 +719,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keefertaylor.MnemonicKitTests-iOS";
-				PRODUCT_NAME = MnemonicKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.electriccoin.MnemonicSwiftTests-iOS";
+				PRODUCT_NAME = MnemonicSwiftTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -725,7 +729,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		62BA42CDC509E0E29733C6B8 /* Build configuration list for PBXNativeTarget "MnemonicKit_macOS" */ = {
+		62BA42CDC509E0E29733C6B8 /* Build configuration list for PBXNativeTarget "MnemonicSwift_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60371281A1EAA4389A28CB66 /* Debug */,
@@ -734,7 +738,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "";
 		};
-		73E41074CEDAECD9E168B6DD /* Build configuration list for PBXNativeTarget "MnemonicKit_iOS" */ = {
+		73E41074CEDAECD9E168B6DD /* Build configuration list for PBXNativeTarget "MnemonicSwift_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7ED19984DD4BD178E30DF4F7 /* Debug */,
@@ -743,7 +747,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "";
 		};
-		8D81EB8096D3E6550D6B8607 /* Build configuration list for PBXNativeTarget "MnemonicKitTests_iOS" */ = {
+		8D81EB8096D3E6550D6B8607 /* Build configuration list for PBXNativeTarget "MnemonicSwiftTests_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EC455A89A9B593EC3F5A45C4 /* Debug */,
@@ -752,7 +756,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "";
 		};
-		9F8727B9B5CF1651B5236875 /* Build configuration list for PBXNativeTarget "MnemonicKitTests_macOS" */ = {
+		9F8727B9B5CF1651B5236875 /* Build configuration list for PBXNativeTarget "MnemonicSwiftTests_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8222C444D51038B461CB0297 /* Debug */,
@@ -761,7 +765,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "";
 		};
-		F5079FB8BED8C51BDEEB8C7C /* Build configuration list for PBXProject "MnemonicKit" */ = {
+		F5079FB8BED8C51BDEEB8C7C /* Build configuration list for PBXProject "MnemonicSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96BDDAF3EBF6F21F44C34083 /* Debug */,

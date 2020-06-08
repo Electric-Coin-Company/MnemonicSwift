@@ -1,9 +1,9 @@
 // Copyright Keefer Taylor, 2018
-
-import MnemonicKit
+// Copyright Electric Coin Company, 2020
+import MnemonicSwift
 import XCTest
 
-class MnemonicTests: XCTestCase {
+class MnemonicSwiftTests: XCTestCase {
   /// Indices in the input file.
   private let hexRepresentationIndex = 0
   private let mnenomicStringIndex = 1
@@ -17,7 +17,7 @@ class MnemonicTests: XCTestCase {
 
   /// Test that MnemonicKit can generate mnemonic strings from hex representations.
   func testGenerateMnemonicFromHex() {
-    guard let vectors = MnemonicTests.dictionaryFromTestInputFile(),
+    guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
       let testCases = vectors[englishTestCases] as? [[String]] else {
       XCTFail("Failed to parse input file.")
       return
@@ -34,7 +34,7 @@ class MnemonicTests: XCTestCase {
 
   /// Test that MnemonicKit can generate deterministic seed strings strings without a passphrase.
   func testGenerateDeterministicSeedStringWithPassphrase() {
-    guard let vectors = MnemonicTests.dictionaryFromTestInputFile(),
+    guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
       let testCases = vectors[englishTestCases] as? [[String]] else {
       XCTFail("Failed to parse input file.")
       return
