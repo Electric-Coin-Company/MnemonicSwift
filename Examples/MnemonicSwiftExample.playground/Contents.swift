@@ -1,6 +1,6 @@
 // Copyright Keefer Taylor, 2019
-
-import MnemonicKit
+// Copyright Electric Coin Company, 2020
+import MnemonicSwift
 
 let strength = 128
 if let mnemonic = Mnemonic.generateMnemonic(strength: strength) {
