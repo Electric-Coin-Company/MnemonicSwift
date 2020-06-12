@@ -1,5 +1,7 @@
 # MnemonicSwift
 
+[![Build Status](https://travis-ci.org/zcash-hackworks/MnemonicSwift.svg?branch=master)](https://travis-ci.org/zcash-hackworks/MnemonicSwift)
+
 An implementation of BIP39 in Swift. MnemonicSwift supports both English and Chinese mnemonics.
 
 This library is a fork of [MnemonicKit](https://github.com/keefertaylor/MnemonicKit). This fork provides provides support for BIP39 using CryptoKit.
