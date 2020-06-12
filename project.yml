@@ -1,10 +1,10 @@
-name: MnemonicKit
+name: MnemonicSwift
 options:
   bundleIdPrefix: co.electriccoin
 settings:
   LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/iOS"
 targets:
-  MnemonicKit:
+  MnemonicSwift:
     type: framework
     platform: [iOS, macOS]
     deploymentTarget:
@@ -18,7 +18,7 @@ targets:
       - script: swiftlint autocorrect --config .swiftlint.yml
         name: SwiftLint
 
-  MnemonicKitTests:
+  MnemonicSwiftTests:
     type: bundle.unit-test
     platform: [iOS, macOS]
     sources: [Tests]

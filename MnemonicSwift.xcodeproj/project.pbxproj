@@ -35,14 +35,14 @@
 			containerPortal = 1EE727346083BF37696D380B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3965BB285FF94319B8863435;
-			remoteInfo = MnemonicKit_iOS;
+			remoteInfo = MnemonicSwift_iOS;
 		};
 		D9A6EBA04CB47D7F58AE52BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1EE727346083BF37696D380B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3A14B55BA3F3716B46D8CA3F;
-			remoteInfo = MnemonicKit_macOS;
+			remoteInfo = MnemonicSwift_macOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -198,7 +198,7 @@
 			dependencies = (
 			);
 			name = MnemonicSwift_iOS;
-			productName = MnemonicKit_iOS;
+			productName = MnemonicSwift_iOS;
 			productReference = 7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -215,7 +215,7 @@
 			dependencies = (
 			);
 			name = MnemonicSwift_macOS;
-			productName = MnemonicKit_macOS;
+			productName = MnemonicSwift_macOS;
 			productReference = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -234,7 +234,7 @@
 				E436535C8686E9FC14FFB6D2 /* PBXTargetDependency */,
 			);
 			name = MnemonicSwiftTests_macOS;
-			productName = MnemonicKitTests_macOS;
+			productName = MnemonicSwiftTests_macOS;
 			productReference = EBA32888ED203FE1DA16BFF1 /* MnemonicSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -253,7 +253,7 @@
 				33E8B97F445A81D3D3B6D0B7 /* PBXTargetDependency */,
 			);
 			name = MnemonicSwiftTests_iOS;
-			productName = MnemonicKitTests_iOS;
+			productName = MnemonicSwiftTests_iOS;
 			productReference = 1645FE576891F45DC72864F6 /* MnemonicSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
