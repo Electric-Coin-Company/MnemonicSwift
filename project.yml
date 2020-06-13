@@ -1,27 +1,26 @@
-name: MnemonicKit
+name: MnemonicSwift
 options:
-  bundleIdPrefix: com.keefertaylor
+  bundleIdPrefix: co.electriccoin
 settings:
   LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(PROJECT_DIR)/Carthage/Build/iOS"
 targets:
-  MnemonicKit:
+  MnemonicSwift:
     type: framework
     platform: [iOS, macOS]
     deploymentTarget:
-      iOS: 10.0
-    sources: [MnemonicKit]
+      iOS: 13.1
+    sources: [MnemonicSwift]
     scheme:
       testTargets:
-        - MnemonicKitTests_${platform}
+        - MnemonicSwiftTests_${platform}
       gatherCoverageData: true
     postCompileScripts:
       - script: swiftlint autocorrect --config .swiftlint.yml
         name: SwiftLint
-    dependencies:
-      - carthage: CryptoSwift
-  MnemonicKitTests:
+
+  MnemonicSwiftTests:
     type: bundle.unit-test
     platform: [iOS, macOS]
     sources: [Tests]
     dependencies:
-      - target: MnemonicKit_${platform}
+      - target: MnemonicSwift_${platform}

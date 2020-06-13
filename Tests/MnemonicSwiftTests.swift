@@ -15,7 +15,7 @@ class MnemonicSwiftTests: XCTestCase {
   /// Passphrase
   private let passphrase = "TREZOR"
 
-  /// Test that MnemonicKit can generate mnemonic strings from hex representations.
+  /// Test that MnemonicSwift can generate mnemonic strings from hex representations.
   func testGenerateMnemonicFromHex() {
     guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
       let testCases = vectors[englishTestCases] as? [[String]] else {
@@ -32,7 +32,7 @@ class MnemonicSwiftTests: XCTestCase {
     }
   }
 
-  /// Test that MnemonicKit can generate deterministic seed strings strings without a passphrase.
+  /// Test that MnemonicSwift can generate deterministic seed strings strings without a passphrase.
   func testGenerateDeterministicSeedStringWithPassphrase() {
     guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
       let testCases = vectors[englishTestCases] as? [[String]] else {
@@ -150,7 +150,7 @@ class MnemonicSwiftTests: XCTestCase {
   /// Test an invalid mnemonic does not generate a seed string.
   func testDeterministicSeedStringInvalidMnemonic() {
     let invalidMnemonic =
-      "mnemonickit mnemonickit mnemonickit mnemonickit mnemonickit mnemonickit mnemonickit mnemonickit mnemonickit"
+      "MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift"
     XCTAssertNil(Mnemonic.deterministicSeedString(from: invalidMnemonic))
   }
 }

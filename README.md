@@ -9,7 +9,7 @@ This library is a fork of [MnemonicKit](https://github.com/keefertaylor/Mnemonic
 ## Installation
 
 ### CocoaPods
-MnemonicSwift supports installation via CocoaPods. You can depened on MnemonicKit by adding the following to your Podfile:
+MnemonicSwift supports installation via CocoaPods. You can depened on MnemonicSwift by adding the following to your Podfile:
 
 ```
 pod "MnemonicSwift"
@@ -18,7 +18,7 @@ pod "MnemonicSwift"
 #### Carthage
 
 If you use [Carthage](https://github.com/Carthage/Carthage) to manage your dependencies, simply add
-MnemonicKit to your `Cartfile`:
+MnemonicSwift to your `Cartfile`:
 
 ```
 github "zcash-hackworks/MnemonicSwift"
@@ -60,7 +60,7 @@ To get set up:
 ```shell
 $ brew install xcodegen # if you don't already have it
 $ xcodegen generate # Generate an XCode project from Project.yml
-$ open MnemonicKit.xcodeproj
+$ open MnemonicSwift.xcodeproj
 ```
 
 ## License

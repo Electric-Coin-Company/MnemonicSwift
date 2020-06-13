@@ -5,7 +5,7 @@
   s.description  = <<-DESC
   MnemonicSwift provides a Swift implementation of BIP39 using CriptoKit
 
-  This library is originally forked from MnemonicKit: https://github.com/keefertaylor/MnemonicKit
+  This library is originally forked from MnemonicSwift: https://github.com/keefertaylor/MnemonicSwift
                    DESC
 
   s.homepage     = "https://github.com/zcash-hackworks/MnemonicSwift"
