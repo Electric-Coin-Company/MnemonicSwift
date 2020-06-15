@@ -1,6 +1,10 @@
 // Copyright Keefer Taylor, 2018
 // Copyright Electric Coin Company, 2020
+#if CRYPTO_IN_SWIFTPM
+import Crypto
+#else
 import CryptoKit
+#endif
 import Foundation
 import Security
 public enum MnemonicLanguageType {

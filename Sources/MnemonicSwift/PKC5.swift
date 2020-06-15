@@ -5,8 +5,13 @@
 //  Created by Liu Pengpeng on 2019/10/10.
 //  Modifed by Francisco Gindre on 2020/02/02
 import CommonCrypto
-import CryptoKit
 import Foundation
+
+#if CRYPTO_IN_SWIFTPM
+import Crypto
+#else
+import CryptoKit
+#endif
 
 public struct PKCS5 {
     public enum Error: Swift.Error {
