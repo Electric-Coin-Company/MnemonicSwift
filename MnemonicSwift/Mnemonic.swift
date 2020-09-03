@@ -17,14 +17,35 @@ public enum MnemonicLanguageType {
     }
 }
 
+public enum MnemonicError: Error {
+    case wrongWordCount
+    case checksumError
+    case invalidWord(word: String)
+    case unsupportedLanguage
+
+}
+
+public enum WordCount: Int {
+    case twelve = 12
+    case fifteen = 15
+    case eighteen = 18
+    case twentyOne = 21
+    case twentFour = 24
+
+    var bitLength: Int {
+        self.rawValue / 3 * 32
+    }
+}
+
 public enum Mnemonic {
     /// Generate a mnemonic from the given hex string in the given language.
     ///
     /// - Parameters:
     ///   - hexString: The hex string to generate a mnemonic from.
     ///   - language: The language to use. Default is english.
+    /// - Returns: the mnemonic string or nil if input is invalid
     public static func mnemonicString(from hexString: String, language: MnemonicLanguageType = .english) -> String? {
-        let seedData = hexString.mnemonicData()
+        guard let seedData = hexString.mnemonicData() else { return nil }
         let hashData = SHA256.hash(data: seedData)
         let checkSum = hashData.bytes.toBitArray()
         var seedBits = seedData.toBitArray()
@@ -43,7 +64,9 @@ public enum Mnemonic {
             let subArray = seedBits[startIndex ..< startIndex + length]
             let subString = subArray.joined(separator: "")
 
-            let index = Int(strtoul(subString, nil, 2))
+            guard let index = Int(subString, radix: 2) else {
+                return nil
+            }
             mnemonic.append(words[index])
         }
         return mnemonic.joined(separator: " ")
@@ -56,6 +79,7 @@ public enum Mnemonic {
     ///   - iterations: The iterations to perform in the PBKDF2 algorithm. Default is 2048.
     ///   - passphrase: An optional passphrase. Default is the empty string.
     ///   - language: The language to use. Default is english.
+    /// - Returns: hexString representing the deterministic seed bytes or `nil` if the given mnemonic is invalid
     public static func deterministicSeedString(
         from mnemonic: String,
         iterations: Int = 2_048,
@@ -65,14 +89,28 @@ public enum Mnemonic {
         deterministicSeedBytes(from: mnemonic, iterations: iterations, passphrase: passphrase, language: language)?.hexString
     }
 
+    /// Generate a deterministic seed string from the given inputs.
+    ///
+    /// - Parameters:
+    ///   - mnemonic: The mnemonic to use.
+    ///   - iterations: The iterations to perform in the PBKDF2 algorithm. Default is 2048.
+    ///   - passphrase: An optional passphrase. Default is the empty string.
+    ///   - language: The language to use. Default is english.
+    /// - Returns: a byte array representing the deterministic seed bytes or `nil` if the given mnemonic is invalid
+
     public static func deterministicSeedBytes(
         from mnemonic: String,
         iterations: Int = 2_048,
         passphrase: String = "",
         language: MnemonicLanguageType = .english
     ) -> [UInt8]? {
-        guard self.validate(mnemonic: mnemonic),
-            let normalizedData = self.normalized(string: mnemonic),
+
+        do {
+            try self.validate(mnemonic: mnemonic)
+        } catch {
+            return nil
+        }
+        guard let normalizedData = self.normalized(string: mnemonic),
             let saltData = normalized(string: "mnemonic" + passphrase) else {
                 return nil
         }
@@ -93,6 +131,7 @@ public enum Mnemonic {
     /// - Parameters:
     ///   - strength: The strength to use. This must be a multiple of 32.
     ///   - language: The language to use. Default is english.
+    /// -- Returns: the random mnemonic phrase of the given strenght and language or `nil` if the strength is invalid or an error occurs
     public static func generateMnemonic(strength: Int, language: MnemonicLanguageType = .english)
         -> String? {
             guard strength % 32 == 0 else {
@@ -108,31 +147,59 @@ public enum Mnemonic {
     }
 
     /// Validate that the given string is a valid mnemonic.
-    public static func validate(mnemonic: String) -> Bool {
-        let normalizedMnemonic = mnemonic.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+    public static func validate(mnemonic: String) throws {
+        let normalizedMnemonic = mnemonic.trimmingCharacters(in: .whitespacesAndNewlines)
         let mnemonicComponents = normalizedMnemonic.components(separatedBy: " ")
         guard !mnemonicComponents.isEmpty else {
-            return false
+            throw MnemonicError.wrongWordCount
         }
 
-        // Use the first component of the mnemonic to determine the language, then make sure all
-        // subsequent components are in that language.
-        if String.englishMnemonics.contains(mnemonicComponents[0]) {
-            for mnemonicComponent in mnemonicComponents {
-                guard String.englishMnemonics.contains(mnemonicComponent) else {
-                    return false
-                }
+        // determine the language of the seed or fail
+        let language = try determineLanguage(from: mnemonicComponents)
+        let vocabulary = language.words()
+
+        // generate indices array
+        var seedBits = ""
+        for word in mnemonicComponents {
+            guard let indexInVocabulary = vocabulary.firstIndex(of: word) else {
+                throw MnemonicError.invalidWord(word: word)
             }
-            return true
-        } else if String.chineseMnemonics.contains(mnemonicComponents[0]) {
-            for mnemonicComponent in mnemonicComponents {
-                guard String.chineseMnemonics.contains(mnemonicComponent) else {
-                    return false
-                }
-            }
-            return true
+
+            let binaryString = String(indexInVocabulary, radix: 2).pad(toSize: 11)
+
+            seedBits.append(contentsOf: binaryString)
+        }
+
+        let checksumLength = mnemonicComponents.count / 3
+        let dataBitsLength = seedBits.count - checksumLength
+
+        let dataBits = String(seedBits.prefix(dataBitsLength))
+        let checksumBits = String(seedBits.suffix(checksumLength))
+
+        guard let dataBytes = dataBits.bitStringToBytes() else {
+            throw MnemonicError.checksumError
+        }
+
+        let hash = SHA256.hash(data: dataBytes)
+        let hashBits = hash.bytes.toBitArray().joined(separator: "").prefix(checksumLength)
+
+        guard hashBits == checksumBits else {
+            throw MnemonicError.checksumError
+        }
+
+    }
+
+    static func determineLanguage(from mnemonicWords: [String]) throws -> MnemonicLanguageType {
+        guard mnemonicWords.count > 0 else {
+            throw MnemonicError.wrongWordCount
+        }
+
+        if String.englishMnemonics.contains(mnemonicWords[0]) {
+            return .english
+        } else if String.chineseMnemonics.contains(mnemonicWords[0]) {
+            return .chinese
         } else {
-            return false
+            throw MnemonicError.unsupportedLanguage
         }
     }
 

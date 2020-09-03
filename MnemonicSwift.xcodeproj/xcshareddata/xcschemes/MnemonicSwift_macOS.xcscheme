@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1150"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3965BB285FF94319B8863435"
+               BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
                BuildableName = "MnemonicSwift.framework"
-               BlueprintName = "MnemonicSwift_iOS"
+               BlueprintName = "MnemonicSwift_macOS"
                ReferencedContainer = "container:MnemonicSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3965BB285FF94319B8863435"
+            BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
             BuildableName = "MnemonicSwift.framework"
-            BlueprintName = "MnemonicSwift_iOS"
+            BlueprintName = "MnemonicSwift_macOS"
             ReferencedContainer = "container:MnemonicSwift.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -43,9 +43,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D57DFC1DDD9E99A6F84A0A0B"
+               BlueprintIdentifier = "6C3E5C33EDE0FF1268354BCC"
                BuildableName = "MnemonicSwiftTests.xctest"
-               BlueprintName = "MnemonicSwiftTests_iOS"
+               BlueprintName = "MnemonicSwiftTests_macOS"
                ReferencedContainer = "container:MnemonicSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -71,9 +71,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3965BB285FF94319B8863435"
+            BlueprintIdentifier = "3A14B55BA3F3716B46D8CA3F"
             BuildableName = "MnemonicSwift.framework"
-            BlueprintName = "MnemonicSwift_iOS"
+            BlueprintName = "MnemonicSwift_macOS"
             ReferencedContainer = "container:MnemonicSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
