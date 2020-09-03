@@ -22,7 +22,10 @@ public enum MnemonicError: Error {
     case checksumError
     case invalidWord(word: String)
     case unsupportedLanguage
-
+    case invalidHexstring
+    case invalidBitString
+    case invalidInput
+    case entropyCreationFailed
 }
 
 public enum WordCount: Int {
@@ -44,8 +47,11 @@ public enum Mnemonic {
     ///   - hexString: The hex string to generate a mnemonic from.
     ///   - language: The language to use. Default is english.
     /// - Returns: the mnemonic string or nil if input is invalid
-    public static func mnemonicString(from hexString: String, language: MnemonicLanguageType = .english) -> String? {
-        guard let seedData = hexString.mnemonicData() else { return nil }
+    /// - Throws:
+    ///   - `MnemonicError.InvalidHexString`:  when an invalid string is given
+    ///   - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
+    static func mnemonicString(from hexString: String, language: MnemonicLanguageType = .english) throws -> String {
+        guard let seedData = hexString.mnemonicData() else { throw MnemonicError.invalidHexstring }
         let hashData = SHA256.hash(data: seedData)
         let checkSum = hashData.bytes.toBitArray()
         var seedBits = seedData.toBitArray()
@@ -65,7 +71,7 @@ public enum Mnemonic {
             let subString = subArray.joined(separator: "")
 
             guard let index = Int(subString, radix: 2) else {
-                return nil
+                throw MnemonicError.invalidBitString
             }
             mnemonic.append(words[index])
         }
@@ -85,8 +91,8 @@ public enum Mnemonic {
         iterations: Int = 2_048,
         passphrase: String = "",
         language: MnemonicLanguageType = .english
-    ) -> String? {
-        deterministicSeedBytes(from: mnemonic, iterations: iterations, passphrase: passphrase, language: language)?.hexString
+    ) throws -> String {
+        try deterministicSeedBytes(from: mnemonic, iterations: iterations, passphrase: passphrase, language: language).hexString
     }
 
     /// Generate a deterministic seed string from the given inputs.
@@ -103,16 +109,13 @@ public enum Mnemonic {
         iterations: Int = 2_048,
         passphrase: String = "",
         language: MnemonicLanguageType = .english
-    ) -> [UInt8]? {
+    ) throws -> [UInt8] {
 
-        do {
-            try self.validate(mnemonic: mnemonic)
-        } catch {
-            return nil
-        }
+        try self.validate(mnemonic: mnemonic)
+
         guard let normalizedData = self.normalized(string: mnemonic),
             let saltData = normalized(string: "mnemonic" + passphrase) else {
-                return nil
+                throw MnemonicError.checksumError
         }
 
         let passwordBytes = normalizedData.map { Int8(bitPattern: $0) }
@@ -122,7 +125,7 @@ public enum Mnemonic {
                 try PKCS5.PBKDF2SHA512(password: passwordBytes, salt: [UInt8](saltData), iterations: iterations)
             return bytes
         } catch {
-            return nil
+            throw MnemonicError.invalidInput
         }
     }
 
@@ -131,22 +134,36 @@ public enum Mnemonic {
     /// - Parameters:
     ///   - strength: The strength to use. This must be a multiple of 32.
     ///   - language: The language to use. Default is english.
-    /// -- Returns: the random mnemonic phrase of the given strenght and language or `nil` if the strength is invalid or an error occurs
-    public static func generateMnemonic(strength: Int, language: MnemonicLanguageType = .english)
-        -> String? {
+    /// - Returns: the random mnemonic phrase of the given strenght and language or `nil` if the strength is invalid or an error occurs
+    /// - Throws:
+    ///  - `MnemonicError.InvalidInput` if stregth is invalid in the terms of BIP-39
+    ///  - `MnemonicError.entropyCreationFailed` if random bytes created for entropy fails
+    ///  - `MnemonicError.InvalidHexString`  when an invalid string is given
+    ///  - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
+    public static func generateMnemonic(strength: Int, language: MnemonicLanguageType = .english) throws
+        -> String {
             guard strength % 32 == 0 else {
-                return nil
+                throw MnemonicError.invalidInput
             }
 
             let count = strength / 8
             var bytes = [UInt8](repeating: 0, count: count)
 
-            guard SecRandomCopyBytes(kSecRandomDefault, count, &bytes) == errSecSuccess else { return nil }
+            guard SecRandomCopyBytes(kSecRandomDefault, count, &bytes) == errSecSuccess else {
+                throw MnemonicError.entropyCreationFailed
+            }
 
-            return mnemonicString(from: bytes.hexString, language: language)
+            return try mnemonicString(from: bytes.hexString, language: language)
     }
 
-    /// Validate that the given string is a valid mnemonic.
+    /// Validate that the given string is a valid mnemonic phrase according to BIP-39
+    /// - Parameters:
+    ///  - mnemonic: a mnemonic phrase string
+    /// - Throws:
+    ///  - `MnemonicError.wrongWordCount` if the word count is invalid
+    ///  - `MnemonicError.invalidWord(word: word)` this phase as a word that's not represented in this library's vocabulary for the detected language.
+    ///  - `MnemonicError.unsupportedLanguage` if the given phrase language isn't supported or couldn't be infered
+    ///  - `throw MnemonicError.checksumError` if the given phrase has an invalid checksum
     public static func validate(mnemonic: String) throws {
         let normalizedMnemonic = mnemonic.trimmingCharacters(in: .whitespacesAndNewlines)
         let mnemonicComponents = normalizedMnemonic.components(separatedBy: " ")
@@ -204,7 +221,7 @@ public enum Mnemonic {
     }
 
     /// Change a string into data.
-    fileprivate static func normalized(string: String) -> Data? {
+    static func normalized(string: String) -> Data? {
         guard let data = string.data(using: .utf8, allowLossyConversion: true),
             let dataString = String(data: data, encoding: .utf8),
             let normalizedData = dataString.data(using: .utf8, allowLossyConversion: false) else {

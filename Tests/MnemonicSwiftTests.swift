@@ -16,7 +16,7 @@ class MnemonicSwiftTests: XCTestCase {
     private let passphrase = "TREZOR"
 
     /// Test that MnemonicSwift can generate mnemonic strings from hex representations.
-    func testGenerateMnemonicFromHex() {
+    func testGenerateMnemonicFromHex() throws {
         guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
             let testCases = vectors[englishTestCases] as? [[String]] else {
                 XCTFail("Failed to parse input file.")
@@ -26,14 +26,14 @@ class MnemonicSwiftTests: XCTestCase {
         for testCase in testCases {
             let expectedMnemonicString = testCase[mnenomicStringIndex]
             let hexRepresentation = testCase[hexRepresentationIndex]
-            let mnemonicString = Mnemonic.mnemonicString(from: hexRepresentation)
+            let mnemonicString = try Mnemonic.mnemonicString(from: hexRepresentation)
 
             XCTAssertEqual(mnemonicString, expectedMnemonicString)
         }
     }
 
     /// Test that MnemonicSwift can generate deterministic seed strings strings without a passphrase.
-    func testGenerateDeterministicSeedStringWithPassphrase() {
+    func testGenerateDeterministicSeedStringWithPassphrase() throws {
         guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
             let testCases = vectors[englishTestCases] as? [[String]] else {
                 XCTFail("Failed to parse input file.")
@@ -44,8 +44,10 @@ class MnemonicSwiftTests: XCTestCase {
             let mnemonicString = testCase[mnenomicStringIndex]
             let expectedDeterministicSeedString = testCase[deterministicSeedStringIndex]
 
-            let deterministicSeedString = Mnemonic.deterministicSeedString(from: mnemonicString, passphrase: passphrase)
-            XCTAssertEqual(deterministicSeedString, expectedDeterministicSeedString)
+            XCTAssertNoThrow({
+                let deterministicSeedString: String = try Mnemonic.deterministicSeedString(from: mnemonicString, passphrase: self.passphrase)
+                XCTAssertEqual(deterministicSeedString, expectedDeterministicSeedString)
+            })
         }
     }
 
@@ -70,32 +72,31 @@ class MnemonicSwiftTests: XCTestCase {
 
     /// Test mnemonic generation in english.
     func testGenerateMnemonic() {
-        let mnemonic = Mnemonic.generateMnemonic(strength: 32)
-        XCTAssertNotNil(mnemonic)
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 32))
     }
 
     /// Prove that functions work in chinese as well.
     func testGenerateMnemonicChinese() {
-        let chineseMnemonic = Mnemonic.generateMnemonic(strength: 32, language: .chinese)
-        XCTAssertNotNil(chineseMnemonic)
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 32, language: .chinese))
     }
 
     /// Test input strengths for mnemonic generation.
     func testMnemonicGenerationStrength() {
-        let mnemonic32 = Mnemonic.generateMnemonic(strength: 32)
-        XCTAssertNotNil(mnemonic32)
-        let mnemonic64 = Mnemonic.generateMnemonic(strength: 64)
-        XCTAssertNotNil(mnemonic64)
-        let mnemonic128 = Mnemonic.generateMnemonic(strength: 128)
-        XCTAssertNotNil(mnemonic128)
-        let mnemonic160 = Mnemonic.generateMnemonic(strength: 160)
-        XCTAssertNotNil(mnemonic160)
-        let mnemonic192 = Mnemonic.generateMnemonic(strength: 192)
-        XCTAssertNotNil(mnemonic192)
-        let mnemonic224 = Mnemonic.generateMnemonic(strength: 224)
-        XCTAssertNotNil(mnemonic224)
-        let mnemonic256 = Mnemonic.generateMnemonic(strength: 256)
-        XCTAssertNotNil(mnemonic256)
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 32))
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 64))
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 128))
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 160))
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 192))
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 224))
+
+        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 256))
 
     }
 
@@ -130,7 +131,7 @@ class MnemonicSwiftTests: XCTestCase {
         XCTAssertThrowsError(try Mnemonic.validate(mnemonic: spanishMnemonic))
     }
 
-    /// Test that strings of mixed case are determined to be valid.
+    /// Test that strings of mixed case are determined to be invalid.
     func testMixedCaseValidation() {
         let mixedCaseMnemonic = "pear PEASANT PeLiCaN pen"
         XCTAssertThrowsError(try Mnemonic.validate(mnemonic: mixedCaseMnemonic))
@@ -152,14 +153,14 @@ class MnemonicSwiftTests: XCTestCase {
     func testDeterministicSeedStringVisuallyValidButYetInvalidMnemonic() {
         let invalidMnemonic =
         "pear peasant pelican pen pear peasant pelican pen pear peasant pelican pen pear peasant pelican pen"
-        XCTAssertNil(Mnemonic.deterministicSeedString(from: invalidMnemonic))
+        XCTAssertThrowsError(try Mnemonic.deterministicSeedString(from: invalidMnemonic))
     }
 
     /// Test an invalid mnemonic does not generate a seed string.
     func testDeterministicSeedStringInvalidMnemonic() {
         let invalidMnemonic =
         "MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift MnemonicSwift"
-        XCTAssertNil(Mnemonic.deterministicSeedString(from: invalidMnemonic))
+        XCTAssertThrowsError(try Mnemonic.deterministicSeedString(from: invalidMnemonic))
     }
 
     func testValidWordCountChinese() {
@@ -203,6 +204,31 @@ class MnemonicSwiftTests: XCTestCase {
         XCTAssertThrowsError(try Mnemonic.validate(mnemonic: twentythreeWordSeed))
     }
 
+    func testApparentlyValidSeedPhraseWithUppercaseCharacter() {
+        let x = "human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
+        let y = "Human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
+        XCTAssertNoThrow(try Mnemonic.validate(mnemonic: x))// having this nearby makes it easy to look at the code and know exactly whats wrong with y
+        XCTAssertThrowsError(try Mnemonic.validate(mnemonic: y))
+
+        XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: x))
+        XCTAssertThrowsError(try Mnemonic.deterministicSeedBytes(from: y))
+
+    }
+
+    func testSwapTwoWords() {
+        let phrase = "human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
+        var x = phrase.components(separatedBy: " ")
+        let i = Int.random(in: 0 ..< x.count)
+        let j = Int.random(in: 0 ..< x.count)
+        x.swapAt(i, j)
+
+        let swappedPhrase = x.joined(separator: " ")
+
+        XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: phrase))
+        XCTAssertThrowsError(try Mnemonic.deterministicSeedBytes(from: swappedPhrase))
+        
+    }
+    
     func testBitStringArrayToData() {
         let validBitString = "10000000"+"00010000"+"00001111"+"11110000"
 
