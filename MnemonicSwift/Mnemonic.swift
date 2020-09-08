@@ -38,6 +38,10 @@ public enum WordCount: Int {
     var bitLength: Int {
         self.rawValue / 3 * 32
     }
+
+    var checksumLength: Int {
+        self.rawValue / 3
+    }
 }
 
 public enum Mnemonic {
@@ -78,14 +82,15 @@ public enum Mnemonic {
         return mnemonic.joined(separator: " ")
     }
 
-    /// Generate a deterministic seed string from the given inputs.
+    /// Generate a deterministic seed string from a Mnemonic String.
     ///
     /// - Parameters:
     ///   - mnemonic: The mnemonic to use.
     ///   - iterations: The iterations to perform in the PBKDF2 algorithm. Default is 2048.
     ///   - passphrase: An optional passphrase. Default is the empty string.
     ///   - language: The language to use. Default is english.
-    /// - Returns: hexString representing the deterministic seed bytes or `nil` if the given mnemonic is invalid
+    /// - Returns: hexString representing the deterministic seed bytes
+    /// - Throws: `MnemonicError.checksumError` if checksum fails, `MnemonicError.invalidInput` if received input is invalid
     public static func deterministicSeedString(
         from mnemonic: String,
         iterations: Int = 2_048,
@@ -95,29 +100,27 @@ public enum Mnemonic {
         try deterministicSeedBytes(from: mnemonic, iterations: iterations, passphrase: passphrase, language: language).hexString
     }
 
-    /// Generate a deterministic seed string from the given inputs.
+    /// Generate a deterministic seed bytes from a Mnemonic String.
     ///
     /// - Parameters:
     ///   - mnemonic: The mnemonic to use.
     ///   - iterations: The iterations to perform in the PBKDF2 algorithm. Default is 2048.
     ///   - passphrase: An optional passphrase. Default is the empty string.
     ///   - language: The language to use. Default is english.
-    /// - Returns: a byte array representing the deterministic seed bytes or `nil` if the given mnemonic is invalid
-
+    /// - Returns: a byte array representing the deterministic seed bytes
+    /// - Throws: `MnemonicError.checksumError` if checksum fails, `MnemonicError.invalidInput` if received input is invalid
     public static func deterministicSeedBytes(
         from mnemonic: String,
         iterations: Int = 2_048,
         passphrase: String = "",
         language: MnemonicLanguageType = .english
     ) throws -> [UInt8] {
+        let normalizedMnemonic = mnemonic.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        try self.validate(mnemonic: mnemonic)
+        try self.validate(mnemonic: normalizedMnemonic)
 
-        guard let normalizedData = self.normalized(string: mnemonic),
-            let saltData = normalized(string: "mnemonic" + passphrase) else {
-                throw MnemonicError.checksumError
-        }
-
+        let normalizedData = try self.normalizedString(mnemonic)
+        let saltData = try self.normalizedString("mnemonic" + passphrase)
         let passwordBytes = normalizedData.map { Int8(bitPattern: $0) }
 
         do {
@@ -165,9 +168,12 @@ public enum Mnemonic {
     ///  - `MnemonicError.unsupportedLanguage` if the given phrase language isn't supported or couldn't be infered
     ///  - `throw MnemonicError.checksumError` if the given phrase has an invalid checksum
     public static func validate(mnemonic: String) throws {
-        let normalizedMnemonic = mnemonic.trimmingCharacters(in: .whitespacesAndNewlines)
-        let mnemonicComponents = normalizedMnemonic.components(separatedBy: " ")
+        let mnemonicComponents = mnemonic.components(separatedBy: " ")
         guard !mnemonicComponents.isEmpty else {
+            throw MnemonicError.wrongWordCount
+        }
+
+        guard let wordCount = WordCount(rawValue: mnemonicComponents.count) else {
             throw MnemonicError.wrongWordCount
         }
 
@@ -188,6 +194,11 @@ public enum Mnemonic {
         }
 
         let checksumLength = mnemonicComponents.count / 3
+
+        guard checksumLength == wordCount.checksumLength else {
+                throw MnemonicError.checksumError
+        }
+
         let dataBitsLength = seedBits.count - checksumLength
 
         let dataBits = String(seedBits.prefix(dataBitsLength))
@@ -221,11 +232,14 @@ public enum Mnemonic {
     }
 
     /// Change a string into data.
-    static func normalized(string: String) -> Data? {
+    /// - Parameter string: the string to convert
+    /// - Returns: the utf8 encoded data
+    /// - Throws: `MnemonicError.invalidInput` if the given String cannot be converted to Data
+    static func normalizedString(_ string: String) throws -> Data {
         guard let data = string.data(using: .utf8, allowLossyConversion: true),
             let dataString = String(data: data, encoding: .utf8),
             let normalizedData = dataString.data(using: .utf8, allowLossyConversion: false) else {
-                return nil
+                throw MnemonicError.invalidInput
         }
         return normalizedData
     }
@@ -234,9 +248,7 @@ public enum Mnemonic {
 extension PKCS5 {
     public static func PBKDF2SHA512(password: String, salt: String, iterations: Int = 2_048, keyLength: Int = 64) throws -> Array<UInt8> {
 
-        guard let saltData = Mnemonic.normalized(string: salt) else {
-            throw PKCS5.Error.invalidInput
-        }
+        let saltData = try Mnemonic.normalizedString(salt)
 
         return try PBKDF2SHA512(password: password.utf8.map({ Int8(bitPattern: $0) }), salt: [UInt8](saltData), iterations: iterations, keyLength: keyLength)
     }

@@ -84,19 +84,33 @@ class MnemonicSwiftTests: XCTestCase {
     /// Test input strengths for mnemonic generation.
     func testMnemonicGenerationStrength() {
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 32))
+        XCTAssertNoThrow(try {
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 32).components(separatedBy: " ").count, 3)
+            }())
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 64))
+        XCTAssertNoThrow(try {
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 64).components(separatedBy: " ").count, 6)
+        }())
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 128))
+        XCTAssertNoThrow(try {
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 128).components(separatedBy: " ").count, 12)
+        }())
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 160))
+        XCTAssertNoThrow(try {
+                   XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 160).components(separatedBy: " ").count, 15)
+        }())
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 192))
+        XCTAssertNoThrow(try {
+                   XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 192).components(separatedBy: " ").count, 18)
+        }())
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 224))
+        XCTAssertNoThrow(try {
+                          XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 224).components(separatedBy: " ").count, 21)
+        }())
 
-        XCTAssertNoThrow(try Mnemonic.generateMnemonic(strength: 256))
+        XCTAssertNoThrow(try {
+                   XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 256).components(separatedBy: " ").count, 24)
+        }())
 
     }
 
@@ -146,7 +160,9 @@ class MnemonicSwiftTests: XCTestCase {
     /// Test that strings padded with whitespace are determined to be valid.
     func testWhitespacePaddedValidation() {
         let whitespacePaddedMnemonic = "    flash tobacco obey genius army stove desk anchor quarter reflect chalk caution\t\t\n"
-        XCTAssertNoThrow(try Mnemonic.validate(mnemonic: whitespacePaddedMnemonic))
+        XCTAssertThrowsError(try Mnemonic.validate(mnemonic: whitespacePaddedMnemonic))
+
+        XCTAssertNoThrow(try Mnemonic.deterministicSeedString(from: whitespacePaddedMnemonic))
     }
 
     /// Test an valid mnemonic generates a seed string.
@@ -174,6 +190,13 @@ class MnemonicSwiftTests: XCTestCase {
         XCTAssertNoThrow(try Mnemonic.validate(mnemonic: mnemonic21))
         let mnemonic24 = "式 扬 技 书 它 锦 亦 桥 晋 尼 登 串 焦 五 溶 寿 沿 能 妹 少 旅 冬 乳 承"
         XCTAssertNoThrow(try Mnemonic.validate(mnemonic: mnemonic24))
+    }
+
+    func testInvalidSmallWordCount() {
+        let twoWordSeed = "flash tobacco"
+        XCTAssertThrowsError(try Mnemonic.validate(mnemonic: twoWordSeed))
+        let singleWordSeed = "flash"
+        XCTAssertThrowsError(try Mnemonic.validate(mnemonic: singleWordSeed))
     }
 
     func testValidWordCount() {
@@ -207,7 +230,7 @@ class MnemonicSwiftTests: XCTestCase {
     func testApparentlyValidSeedPhraseWithUppercaseCharacter() {
         let x = "human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
         let y = "Human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
-        XCTAssertNoThrow(try Mnemonic.validate(mnemonic: x))// having this nearby makes it easy to look at the code and know exactly whats wrong with y
+        XCTAssertNoThrow(try Mnemonic.validate(mnemonic: x))
         XCTAssertThrowsError(try Mnemonic.validate(mnemonic: y))
 
         XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: x))
@@ -218,17 +241,17 @@ class MnemonicSwiftTests: XCTestCase {
     func testSwapTwoWords() {
         let phrase = "human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
         var x = phrase.components(separatedBy: " ")
-        let i = Int.random(in: 0 ..< x.count)
-        let j = Int.random(in: 0 ..< x.count)
+        let i = Int.random(in: 1 ..< x.count)
+        let j = Int.random(in: 0 ..< i)
         x.swapAt(i, j)
 
         let swappedPhrase = x.joined(separator: " ")
 
         XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: phrase))
         XCTAssertThrowsError(try Mnemonic.deterministicSeedBytes(from: swappedPhrase))
-        
+
     }
-    
+
     func testBitStringArrayToData() {
         let validBitString = "10000000"+"00010000"+"00001111"+"11110000"
 
