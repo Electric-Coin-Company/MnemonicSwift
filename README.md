@@ -6,6 +6,8 @@ An implementation of BIP39 in Swift. MnemonicSwift supports both English and Chi
 
 This library is a fork of [MnemonicKit](https://github.com/keefertaylor/MnemonicKit). This fork provides provides support for BIP39 using CryptoKit.
 
+**NOTE to 1.0.0 users**: If you are using 1.0.0 in your project, we no longer maintain that version. Upgrade to 2.0.0 immediately. 
+
 ## Installation
 
 ### CocoaPods
