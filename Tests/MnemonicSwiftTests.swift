@@ -227,7 +227,7 @@ class MnemonicSwiftTests: XCTestCase {
         XCTAssertThrowsError(try Mnemonic.validate(mnemonic: twentythreeWordSeed))
     }
 
-    func testApparentlyValidSeedPhraseWithUppercaseCharacter() {
+    func testApparentlyValidSeedPhraseWithUppercaseCharacter() throws {
         let x = "human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
         let y = "Human pulse approve subway climb stairs mind gentle raccoon warfare fog roast sponsor under absorb spirit hurdle animal original honey owner upper empower describe"
         XCTAssertNoThrow(try Mnemonic.validate(mnemonic: x))
@@ -235,6 +235,9 @@ class MnemonicSwiftTests: XCTestCase {
 
         XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: x))
         XCTAssertThrowsError(try Mnemonic.deterministicSeedBytes(from: y))
+
+        XCTAssertEqual(try Mnemonic.deterministicSeedBytes(from: x), try Mnemonic.deterministicSeedBytes(from: " " + x))
+        XCTAssertEqual(try Mnemonic.deterministicSeedBytes(from: x), try Mnemonic.deterministicSeedBytes(from: x + "\n"))
 
     }
 

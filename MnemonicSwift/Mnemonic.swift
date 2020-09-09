@@ -119,7 +119,7 @@ public enum Mnemonic {
 
         try self.validate(mnemonic: normalizedMnemonic)
 
-        let normalizedData = try self.normalizedString(mnemonic)
+        let normalizedData = try self.normalizedString(normalizedMnemonic)
         let saltData = try self.normalizedString("mnemonic" + passphrase)
         let passwordBytes = normalizedData.map { Int8(bitPattern: $0) }
 
