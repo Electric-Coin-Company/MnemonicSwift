@@ -1,8 +1,10 @@
 // Copyright Keefer Taylor, 2018
 // Copyright Electric Coin Company, 2020
-import CryptoKit
+
+import Crypto
 import Foundation
 import Security
+
 public enum MnemonicLanguageType {
     case english
     case chinese
@@ -125,7 +127,7 @@ public enum Mnemonic {
 
         do {
             let bytes =
-                try PKCS5.PBKDF2SHA512(password: passwordBytes, salt: [UInt8](saltData), iterations: iterations)
+            try PKCS5.PBKDF2SHA512(password: passwordBytes, salt: [UInt8](saltData), iterations: iterations)
             return bytes
         } catch {
             throw MnemonicError.invalidInput
@@ -143,20 +145,22 @@ public enum Mnemonic {
     ///  - `MnemonicError.entropyCreationFailed` if random bytes created for entropy fails
     ///  - `MnemonicError.InvalidHexString`  when an invalid string is given
     ///  - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
-    public static func generateMnemonic(strength: Int, language: MnemonicLanguageType = .english) throws
-        -> String {
-            guard strength % 32 == 0 else {
-                throw MnemonicError.invalidInput
-            }
-
-            let count = strength / 8
-            var bytes = [UInt8](repeating: 0, count: count)
-
-            guard SecRandomCopyBytes(kSecRandomDefault, count, &bytes) == errSecSuccess else {
-                throw MnemonicError.entropyCreationFailed
-            }
-
-            return try mnemonicString(from: bytes.hexString, language: language)
+    public static func generateMnemonic(
+        strength: Int,
+        language: MnemonicLanguageType = .english
+    ) throws -> String {
+        guard strength % 32 == 0 else {
+            throw MnemonicError.invalidInput
+        }
+        
+        let count = strength / 8
+        var bytes = [UInt8](repeating: 0, count: count)
+        
+        guard SecRandomCopyBytes(kSecRandomDefault, count, &bytes) == errSecSuccess else {
+            throw MnemonicError.entropyCreationFailed
+        }
+        
+        return try mnemonicString(from: bytes.hexString, language: language)
     }
 
     /// Validate that the given string is a valid mnemonic phrase according to BIP-39
@@ -196,7 +200,7 @@ public enum Mnemonic {
         let checksumLength = mnemonicComponents.count / 3
 
         guard checksumLength == wordCount.checksumLength else {
-                throw MnemonicError.checksumError
+            throw MnemonicError.checksumError
         }
 
         let dataBitsLength = seedBits.count - checksumLength
@@ -237,16 +241,16 @@ public enum Mnemonic {
     /// - Throws: `MnemonicError.invalidInput` if the given String cannot be converted to Data
     static func normalizedString(_ string: String) throws -> Data {
         guard let data = string.data(using: .utf8, allowLossyConversion: true),
-            let dataString = String(data: data, encoding: .utf8),
-            let normalizedData = dataString.data(using: .utf8, allowLossyConversion: false) else {
-                throw MnemonicError.invalidInput
-        }
+              let dataString = String(data: data, encoding: .utf8),
+              let normalizedData = dataString.data(using: .utf8, allowLossyConversion: false) else {
+                  throw MnemonicError.invalidInput
+              }
         return normalizedData
     }
 }
 
 extension PKCS5 {
-    public static func PBKDF2SHA512(password: String, salt: String, iterations: Int = 2_048, keyLength: Int = 64) throws -> Array<UInt8> {
+    public static func PBKDF2SHA512(password: String, salt: String, iterations: Int = 2_048, keyLength: Int = 64) throws -> [UInt8] {
 
         let saltData = try Mnemonic.normalizedString(salt)
 

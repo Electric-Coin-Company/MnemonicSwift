@@ -13,11 +13,11 @@
   s.author       = { "Francisco Gindre" => "francisco.gindre@gmail.com" }
   s.source       = { :git => "https://github.com/zcash-hackworks/MnemonicSwift.git", :tag => s.version }
   s.source_files  = "MnemonicSwift/**/*.swift",
-  s.swift_version = "5.1"
+  s.swift_version = "5.3"
   s.ios.deployment_target = "13.0"
   s.osx.deployment_target = "10.15"
 
-  s.framework = "CryptoKit"
+  s.framework = "Crypto"
   s.test_spec "Tests" do |test_spec|
     test_spec.source_files = "Tests/*.swift"
     test_spec.resources = ["Tests/*.json"]

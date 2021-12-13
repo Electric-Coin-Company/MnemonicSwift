@@ -1,5 +1,6 @@
 // Copyright Keefer Taylor, 2018
 // Copyright Electric Coin Company, 2020
+
 import Foundation
 
 extension String {

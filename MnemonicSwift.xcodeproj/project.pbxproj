@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		0DDAF3A52408728600EA9427 /* PKC5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAF3A32408728600EA9427 /* PKC5.swift */; };
 		122777029525BA9CC4F9A958 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9024EB02AB18E1F44789A /* Mnemonic.swift */; };
 		2A51344C2F30A6CE1A391BCF /* MnemonicSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */; };
+		2E8756142768CFA5000BBABD /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 2E8756132768CFA5000BBABD /* Crypto */; };
+		2E8756182768D6DF000BBABD /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 2E8756172768D6DF000BBABD /* Crypto */; };
+		2E87561A2768D702000BBABD /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 2E8756192768D702000BBABD /* Crypto */; };
 		422A84796316566997821D77 /* vectors.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E5287598681E0527694214 /* vectors.json */; };
 		81D18E658D26212E4D7647D8 /* String+MnemonicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */; };
 		8DC3D3DA23DBEAD93257DE4F /* MnemonicSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */; };
@@ -102,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				985214FD923DB7C6DDBA36EF /* MnemonicSwift.framework in Frameworks */,
+				2E8756142768CFA5000BBABD /* Crypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E87561A2768D702000BBABD /* Crypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E8756182768D6DF000BBABD /* Crypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +204,9 @@
 			dependencies = (
 			);
 			name = MnemonicSwift_iOS;
+			packageProductDependencies = (
+				2E8756172768D6DF000BBABD /* Crypto */,
+			);
 			productName = MnemonicSwift_iOS;
 			productReference = 7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */;
 			productType = "com.apple.product-type.framework";
@@ -215,6 +224,9 @@
 			dependencies = (
 			);
 			name = MnemonicSwift_macOS;
+			packageProductDependencies = (
+				2E8756192768D702000BBABD /* Crypto */,
+			);
 			productName = MnemonicSwift_macOS;
 			productReference = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */;
 			productType = "com.apple.product-type.framework";
@@ -253,6 +265,9 @@
 				33E8B97F445A81D3D3B6D0B7 /* PBXTargetDependency */,
 			);
 			name = MnemonicSwiftTests_iOS;
+			packageProductDependencies = (
+				2E8756132768CFA5000BBABD /* Crypto */,
+			);
 			productName = MnemonicSwiftTests_iOS;
 			productReference = 1645FE576891F45DC72864F6 /* MnemonicSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -263,7 +278,7 @@
 		1EE727346083BF37696D380B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1310;
 			};
 			buildConfigurationList = F5079FB8BED8C51BDEEB8C7C /* Build configuration list for PBXProject "MnemonicSwift" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -274,6 +289,9 @@
 				en,
 			);
 			mainGroup = A44468790B8FFF397004AD5A;
+			packageReferences = (
+				2E8756122768CFA5000BBABD /* XCRemoteSwiftPackageReference "swift-crypto" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -606,6 +624,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -664,6 +683,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -775,6 +795,35 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E8756122768CFA5000BBABD /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E8756132768CFA5000BBABD /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E8756122768CFA5000BBABD /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+		2E8756172768D6DF000BBABD /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E8756122768CFA5000BBABD /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+		2E8756192768D702000BBABD /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E8756122768CFA5000BBABD /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1EE727346083BF37696D380B /* Project object */;
 }
