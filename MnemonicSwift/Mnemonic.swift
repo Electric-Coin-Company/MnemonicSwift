@@ -246,7 +246,7 @@ public enum Mnemonic {
 }
 
 extension PKCS5 {
-    public static func PBKDF2SHA512(password: String, salt: String, iterations: Int = 2_048, keyLength: Int = 64) throws -> Array<UInt8> {
+    public static func PBKDF2SHA512(password: String, salt: String, iterations: Int = 2_048, keyLength: Int = 64) throws -> [UInt8] {
 
         let saltData = try Mnemonic.normalizedString(salt)
 

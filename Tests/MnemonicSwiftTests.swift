@@ -59,7 +59,7 @@ class MnemonicSwiftTests: XCTestCase {
 
         do {
             let data = try Data(contentsOf: url)
-            let options: JSONSerialization.ReadingOptions =  [.allowFragments, .mutableContainers, .mutableLeaves]
+            let options: JSONSerialization.ReadingOptions = [.allowFragments, .mutableContainers, .mutableLeaves]
             guard let parsedDictionary =
                 try JSONSerialization.jsonObject(with: data, options: options) as? [String: Any] else {
                     return nil
@@ -256,7 +256,7 @@ class MnemonicSwiftTests: XCTestCase {
     }
 
     func testBitStringArrayToData() {
-        let validBitString = "10000000"+"00010000"+"00001111"+"11110000"
+        let validBitString = "10000000" + "00010000" + "00001111" + "11110000"
 
         let uints: [UInt8] = [128, 16, 15, 240]
         let expectedDataArray = Data(uints)
@@ -269,7 +269,7 @@ class MnemonicSwiftTests: XCTestCase {
 
     func testBitStringArrayToDataFailsOnIncorrectString() {
 
-        let bendersDream = "10000000"+"00010000"+"00020111"+"11110000"
+        let bendersDream = "10000000" + "00010000" + "00020111" + "11110000"
 
         let result = bendersDream.bitStringToBytes()
 

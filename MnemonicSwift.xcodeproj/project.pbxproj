@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DDAF3A42408728600EA9427 /* PKC5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAF3A32408728600EA9427 /* PKC5.swift */; };
 		0DDAF3A52408728600EA9427 /* PKC5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAF3A32408728600EA9427 /* PKC5.swift */; };
 		122777029525BA9CC4F9A958 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9024EB02AB18E1F44789A /* Mnemonic.swift */; };
 		2A51344C2F30A6CE1A391BCF /* MnemonicSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */; };
+		2E1D0790276CCA0800AD43AB /* MnemonicInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D078F276CCA0800AD43AB /* MnemonicInteractor.swift */; };
+		2E8756142768CFA5000BBABD /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 2E8756132768CFA5000BBABD /* Crypto */; };
 		422A84796316566997821D77 /* vectors.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E5287598681E0527694214 /* vectors.json */; };
 		81D18E658D26212E4D7647D8 /* String+MnemonicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */; };
 		8DC3D3DA23DBEAD93257DE4F /* MnemonicSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7EE929BD11BA8AB38F9C19 /* MnemonicSwift.framework */; };
@@ -81,6 +82,7 @@
 		1D6F81AB601CF04F3F1E52E3 /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
 		23F75813C686C37B78DE459E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MnemonicData.swift"; sourceTree = "<group>"; };
+		2E1D078F276CCA0800AD43AB /* MnemonicInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicInteractor.swift; sourceTree = "<group>"; };
 		7DCB97C4881969FDB72C61DB /* MnemonicSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MnemonicSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E5287598681E0527694214 /* vectors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vectors.json; sourceTree = "<group>"; };
 		D2D9394FFD7755F40E53D60E /* Data+BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+BitArray.swift"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				0DAE92E7248EDE9700067A0B /* Info.plist */,
 				D2D9394FFD7755F40E53D60E /* Data+BitArray.swift */,
 				12B9024EB02AB18E1F44789A /* Mnemonic.swift */,
+				2E1D078F276CCA0800AD43AB /* MnemonicInteractor.swift */,
 				256E6CB62D82160ACBA1512E /* String+MnemonicData.swift */,
 				07836B522CFA5AB2F61C4F9F /* Language */,
 				0DDAF3A32408728600EA9427 /* PKC5.swift */,
@@ -351,6 +354,7 @@
 				D04ECC70FD2144C467D7E779 /* Chinese.swift in Sources */,
 				EFBEB3B343A9FDDD7B67FF88 /* Data+BitArray.swift in Sources */,
 				D4460C3982D7B9A90D99C790 /* English.swift in Sources */,
+				2E1D0791276CCA0800AD43AB /* MnemonicInteractor.swift in Sources */,
 				C3A836752BC9FC7C89A398C5 /* Mnemonic.swift in Sources */,
 				0DDAF3A52408728600EA9427 /* PKC5.swift in Sources */,
 				9374718ABBF77ACE41A92B18 /* String+MnemonicData.swift in Sources */,
@@ -364,6 +368,7 @@
 				996B7163A0786EC88C945C9F /* Chinese.swift in Sources */,
 				8EAFFDA8F2A30674EA9EBBBC /* Data+BitArray.swift in Sources */,
 				934F1409AF864AAA0AB52FDA /* English.swift in Sources */,
+				2E1D0790276CCA0800AD43AB /* MnemonicInteractor.swift in Sources */,
 				122777029525BA9CC4F9A958 /* Mnemonic.swift in Sources */,
 				0DDAF3A42408728600EA9427 /* PKC5.swift in Sources */,
 				81D18E658D26212E4D7647D8 /* String+MnemonicData.swift in Sources */,
