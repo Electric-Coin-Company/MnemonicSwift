@@ -4,8 +4,8 @@
 //
 //  Created by Liu Pengpeng on 2019/10/10.
 //  Modifed by Francisco Gindre on 2020/02/02
+
 import CommonCrypto
-import CryptoKit
 import Foundation
 
 public struct PKCS5 {
@@ -13,7 +13,7 @@ public struct PKCS5 {
         case invalidInput
     }
 
-    public static func PBKDF2SHA512(password: Array<Int8>, salt: Array<UInt8>, iterations: Int = 2_048, keyLength: Int = 64) throws -> Array<UInt8> {
+    public static func PBKDF2SHA512(password: [Int8], salt: [UInt8], iterations: Int = 2_048, keyLength: Int = 64) throws -> [UInt8] {
         var bytes = [UInt8](repeating: 0, count: keyLength)
 
         try bytes.withUnsafeMutableBytes { (outputBytes: UnsafeMutableRawBufferPointer) in

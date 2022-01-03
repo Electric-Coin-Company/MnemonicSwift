@@ -1,5 +1,6 @@
 // Copyright Keefer Taylor, 2018
 // Copyright Electric Coin Company, 2020
+
 @testable import MnemonicSwift
 import XCTest
 
@@ -18,11 +19,11 @@ class MnemonicSwiftTests: XCTestCase {
     /// Test that MnemonicSwift can generate mnemonic strings from hex representations.
     func testGenerateMnemonicFromHex() throws {
         guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
-            let testCases = vectors[englishTestCases] as? [[String]] else {
-                XCTFail("Failed to parse input file.")
-                return
-        }
-
+              let testCases = vectors[englishTestCases] as? [[String]] else {
+                  XCTFail("Failed to parse input file.")
+                  return
+              }
+        
         for testCase in testCases {
             let expectedMnemonicString = testCase[mnenomicStringIndex]
             let hexRepresentation = testCase[hexRepresentationIndex]
@@ -35,11 +36,11 @@ class MnemonicSwiftTests: XCTestCase {
     /// Test that MnemonicSwift can generate deterministic seed strings strings without a passphrase.
     func testGenerateDeterministicSeedStringWithPassphrase() throws {
         guard let vectors = MnemonicSwiftTests.dictionaryFromTestInputFile(),
-            let testCases = vectors[englishTestCases] as? [[String]] else {
-                XCTFail("Failed to parse input file.")
-                return
-        }
-
+              let testCases = vectors[englishTestCases] as? [[String]] else {
+                  XCTFail("Failed to parse input file.")
+                  return
+              }
+        
         for testCase in testCases {
             let mnemonicString = testCase[mnenomicStringIndex]
             let expectedDeterministicSeedString = testCase[deterministicSeedStringIndex]
@@ -52,18 +53,17 @@ class MnemonicSwiftTests: XCTestCase {
     }
 
     static func dictionaryFromTestInputFile() -> [String: Any]? {
-        let testBundle = Bundle(for: self)
-        guard let url = testBundle.url(forResource: "vectors", withExtension: "json") else {
+        guard let url = Bundle.module.url(forResource: "vectors", withExtension: "json") else {
             return nil
         }
 
         do {
             let data = try Data(contentsOf: url)
-            let options: JSONSerialization.ReadingOptions =  [.allowFragments, .mutableContainers, .mutableLeaves]
+            let options: JSONSerialization.ReadingOptions = [.allowFragments, .mutableContainers, .mutableLeaves]
             guard let parsedDictionary =
-                try JSONSerialization.jsonObject(with: data, options: options) as? [String: Any] else {
-                    return nil
-            }
+                    try JSONSerialization.jsonObject(with: data, options: options) as? [String: Any] else {
+                        return nil
+                    }
             return parsedDictionary
         } catch {
             return nil
@@ -86,8 +86,8 @@ class MnemonicSwiftTests: XCTestCase {
 
         XCTAssertNoThrow(try {
             XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 32).components(separatedBy: " ").count, 3)
-            }())
-
+        }())
+        
         XCTAssertNoThrow(try {
             XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 64).components(separatedBy: " ").count, 6)
         }())
@@ -97,21 +97,20 @@ class MnemonicSwiftTests: XCTestCase {
         }())
 
         XCTAssertNoThrow(try {
-                   XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 160).components(separatedBy: " ").count, 15)
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 160).components(separatedBy: " ").count, 15)
         }())
 
         XCTAssertNoThrow(try {
-                   XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 192).components(separatedBy: " ").count, 18)
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 192).components(separatedBy: " ").count, 18)
         }())
 
         XCTAssertNoThrow(try {
-                          XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 224).components(separatedBy: " ").count, 21)
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 224).components(separatedBy: " ").count, 21)
         }())
 
         XCTAssertNoThrow(try {
-                   XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 256).components(separatedBy: " ").count, 24)
+            XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 256).components(separatedBy: " ").count, 24)
         }())
-
     }
 
     /// Test valid chinese and english mnemonics are determined to be Invalid.
@@ -235,10 +234,15 @@ class MnemonicSwiftTests: XCTestCase {
 
         XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: x))
         XCTAssertThrowsError(try Mnemonic.deterministicSeedBytes(from: y))
-
-        XCTAssertEqual(try Mnemonic.deterministicSeedBytes(from: x), try Mnemonic.deterministicSeedBytes(from: " " + x))
-        XCTAssertEqual(try Mnemonic.deterministicSeedBytes(from: x), try Mnemonic.deterministicSeedBytes(from: x + "\n"))
-
+        
+        XCTAssertEqual(
+            try Mnemonic.deterministicSeedBytes(from: x),
+            try Mnemonic.deterministicSeedBytes(from: " " + x)
+        )
+        XCTAssertEqual(
+            try Mnemonic.deterministicSeedBytes(from: x),
+            try Mnemonic.deterministicSeedBytes(from: x + "\n")
+        )
     }
 
     func testSwapTwoWords() {
@@ -256,7 +260,7 @@ class MnemonicSwiftTests: XCTestCase {
     }
 
     func testBitStringArrayToData() {
-        let validBitString = "10000000"+"00010000"+"00001111"+"11110000"
+        let validBitString = "10000000" + "00010000" + "00001111" + "11110000"
 
         let uints: [UInt8] = [128, 16, 15, 240]
         let expectedDataArray = Data(uints)
@@ -268,13 +272,10 @@ class MnemonicSwiftTests: XCTestCase {
     }
 
     func testBitStringArrayToDataFailsOnIncorrectString() {
-
-        let bendersDream = "10000000"+"00010000"+"00020111"+"11110000"
-
+        let bendersDream = "10000000" + "00010000" + "00020111" + "11110000"
         let result = bendersDream.bitStringToBytes()
 
         XCTAssertNil(result)
-
     }
 
     func testInvalidMnemonicData() {
@@ -286,11 +287,8 @@ class MnemonicSwiftTests: XCTestCase {
         let expectedData = Data([0xf1, 0xf1, 0xf1])
 
         XCTAssertEqual(validMnemonicData.mnemonicData(), expectedData)
-
         XCTAssertEqual(invalidMnemonicData.mnemonicData(), nil)
-
         XCTAssertEqual(veryInvalidMnemonicData.mnemonicData(), nil)
-
     }
 
     func testPad() {

@@ -60,7 +60,11 @@ screenshots
 
 #build output
 /outputs
+.build
 
 # Playgrounds
 timeline.xctimeline
 playground.xcworkspace
+
+#SwiftPM
+.swiftpm
