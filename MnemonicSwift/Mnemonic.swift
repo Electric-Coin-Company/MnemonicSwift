@@ -1,7 +1,12 @@
 // Copyright Keefer Taylor, 2018
 // Copyright Electric Coin Company, 2020
 
+#if canImport(CryptoKit)
+import CryptoKit
+#else
 import Crypto
+#endif
+
 import Foundation
 import Security
 
@@ -152,14 +157,14 @@ public enum Mnemonic {
         guard strength % 32 == 0 else {
             throw MnemonicError.invalidInput
         }
-        
+
         let count = strength / 8
         var bytes = [UInt8](repeating: 0, count: count)
-        
+
         guard SecRandomCopyBytes(kSecRandomDefault, count, &bytes) == errSecSuccess else {
             throw MnemonicError.entropyCreationFailed
         }
-        
+
         return try mnemonicString(from: bytes.hexString, language: language)
     }
 

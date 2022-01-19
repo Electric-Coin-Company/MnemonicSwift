@@ -23,7 +23,7 @@ class MnemonicSwiftTests: XCTestCase {
                   XCTFail("Failed to parse input file.")
                   return
               }
-        
+
         for testCase in testCases {
             let expectedMnemonicString = testCase[mnenomicStringIndex]
             let hexRepresentation = testCase[hexRepresentationIndex]
@@ -40,7 +40,7 @@ class MnemonicSwiftTests: XCTestCase {
                   XCTFail("Failed to parse input file.")
                   return
               }
-        
+
         for testCase in testCases {
             let mnemonicString = testCase[mnenomicStringIndex]
             let expectedDeterministicSeedString = testCase[deterministicSeedStringIndex]
@@ -53,9 +53,15 @@ class MnemonicSwiftTests: XCTestCase {
     }
 
     static func dictionaryFromTestInputFile() -> [String: Any]? {
+#if SWIFT_PACKAGE
         guard let url = Bundle.module.url(forResource: "vectors", withExtension: "json") else {
             return nil
         }
+#else
+        guard let url = Bundle(for: MnemonicSwiftTests.self).url(forResource: "vectors", withExtension: "json") else {
+            return nil
+        }
+#endif
 
         do {
             let data = try Data(contentsOf: url)
@@ -87,7 +93,7 @@ class MnemonicSwiftTests: XCTestCase {
         XCTAssertNoThrow(try {
             XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 32).components(separatedBy: " ").count, 3)
         }())
-        
+
         XCTAssertNoThrow(try {
             XCTAssertEqual(try Mnemonic.generateMnemonic(strength: 64).components(separatedBy: " ").count, 6)
         }())
@@ -234,7 +240,7 @@ class MnemonicSwiftTests: XCTestCase {
 
         XCTAssertNoThrow(try Mnemonic.deterministicSeedBytes(from: x))
         XCTAssertThrowsError(try Mnemonic.deterministicSeedBytes(from: y))
-        
+
         XCTAssertEqual(
             try Mnemonic.deterministicSeedBytes(from: x),
             try Mnemonic.deterministicSeedBytes(from: " " + x)

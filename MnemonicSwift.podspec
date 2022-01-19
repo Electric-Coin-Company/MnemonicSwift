@@ -1,6 +1,6 @@
  Pod::Spec.new do |s|
   s.name         = "MnemonicSwift"
-  s.version      = "2.0.0"
+  s.version      = "2.1.0"
   s.summary      = "A Swift implementation of BIP39 Mnemonics"
   s.description  = <<-DESC
   MnemonicSwift provides a Swift implementation of BIP39 using CriptoKit
@@ -17,7 +17,7 @@
   s.ios.deployment_target = "13.0"
   s.osx.deployment_target = "10.15"
 
-  s.framework = "Crypto"
+  s.framework = "CryptoKit"
   s.test_spec "Tests" do |test_spec|
     test_spec.source_files = "Tests/*.swift"
     test_spec.resources = ["Tests/*.json"]
