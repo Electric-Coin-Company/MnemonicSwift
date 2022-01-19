@@ -9,7 +9,7 @@
                    DESC
 
   s.homepage     = "https://github.com/zcash-hackworks/MnemonicSwift"
-  s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.license      = { :type => "dual", :file => "COPYING.md" }
   s.author       = { "Francisco Gindre" => "francisco.gindre@gmail.com" }
   s.source       = { :git => "https://github.com/zcash-hackworks/MnemonicSwift.git", :tag => s.version }
   s.source_files  = "MnemonicSwift/**/*.swift",
