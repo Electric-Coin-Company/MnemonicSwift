@@ -1,6 +1,6 @@
  Pod::Spec.new do |s|
   s.name         = "MnemonicSwift"
-  s.version      = "2.0.0"
+  s.version      = "2.1.0"
   s.summary      = "A Swift implementation of BIP39 Mnemonics"
   s.description  = <<-DESC
   MnemonicSwift provides a Swift implementation of BIP39 using CriptoKit
