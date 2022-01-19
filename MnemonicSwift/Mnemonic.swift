@@ -1,7 +1,12 @@
 // Copyright Keefer Taylor, 2018
 // Copyright Electric Coin Company, 2020
 
+#if canImport(CryptoKit)
+import CryptoKit
+#else
 import Crypto
+#endif
+
 import Foundation
 import Security
 

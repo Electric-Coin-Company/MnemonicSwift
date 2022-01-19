@@ -17,7 +17,7 @@
   s.ios.deployment_target = "13.0"
   s.osx.deployment_target = "10.15"
 
-  s.framework = "Crypto"
+  s.framework = "CryptoKit"
   s.test_spec "Tests" do |test_spec|
     test_spec.source_files = "Tests/*.swift"
     test_spec.resources = ["Tests/*.json"]
