@@ -61,7 +61,7 @@ public enum Mnemonic {
     /// - Throws:
     ///   - `MnemonicError.InvalidHexString`:  when an invalid string is given
     ///   - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
-    static func mnemonicString(from hexString: String, language: MnemonicLanguageType = .english) throws -> String {
+    public static func mnemonicString(from hexString: String, language: MnemonicLanguageType = .english) throws -> String {
         guard let seedData = hexString.mnemonicData() else { throw MnemonicError.invalidHexstring }
         let hashData = SHA256.hash(data: seedData)
         let checkSum = hashData.bytes.toBitArray()
@@ -226,7 +226,7 @@ public enum Mnemonic {
 
     }
 
-    static func determineLanguage(from mnemonicWords: [String]) throws -> MnemonicLanguageType {
+    public static func determineLanguage(from mnemonicWords: [String]) throws -> MnemonicLanguageType {
         guard mnemonicWords.count > 0 else {
             throw MnemonicError.wrongWordCount
         }
@@ -244,7 +244,7 @@ public enum Mnemonic {
     /// - Parameter string: the string to convert
     /// - Returns: the utf8 encoded data
     /// - Throws: `MnemonicError.invalidInput` if the given String cannot be converted to Data
-    static func normalizedString(_ string: String) throws -> Data {
+    public static func normalizedString(_ string: String) throws -> Data {
         guard let data = string.data(using: .utf8, allowLossyConversion: true),
               let dataString = String(data: data, encoding: .utf8),
               let normalizedData = dataString.data(using: .utf8, allowLossyConversion: false) else {

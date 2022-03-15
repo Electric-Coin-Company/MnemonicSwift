@@ -116,7 +116,7 @@ public struct MnemonicInteractor {
     /// - Throws: `MnemonicError.invalidInput` if the given String cannot be converted to Data
     let normalizedString: (String) throws -> Data
 
-    init(
+    public init(
         mnemonicEnglishString: @escaping (String) throws -> String = { hexString in
             try Mnemonic.mnemonicString(from: hexString)
         },
@@ -184,9 +184,9 @@ public struct MnemonicInteractor {
 }
 
 extension MnemonicInteractor {
-    static let live = MnemonicInteractor()
+    public static let live = MnemonicInteractor()
 
-    static let throwing = MnemonicInteractor(
+    public static let throwing = MnemonicInteractor(
         mnemonicEnglishString: { _ in
             throw MnemonicError.invalidHexstring
         },
