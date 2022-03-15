@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DDAF3A52408728600EA9427 /* PKC5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAF3A32408728600EA9427 /* PKC5.swift */; };
+		0DFA568227E0BCDC00F487BA /* MnemonicInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D078F276CCA0800AD43AB /* MnemonicInteractor.swift */; };
 		122777029525BA9CC4F9A958 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9024EB02AB18E1F44789A /* Mnemonic.swift */; };
 		2A51344C2F30A6CE1A391BCF /* MnemonicSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5EC633D7524CD344B44513 /* MnemonicSwiftTests.swift */; };
 		2E1D0790276CCA0800AD43AB /* MnemonicInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D078F276CCA0800AD43AB /* MnemonicInteractor.swift */; };
@@ -372,6 +373,7 @@
 				D04ECC70FD2144C467D7E779 /* Chinese.swift in Sources */,
 				EFBEB3B343A9FDDD7B67FF88 /* Data+BitArray.swift in Sources */,
 				D4460C3982D7B9A90D99C790 /* English.swift in Sources */,
+				0DFA568227E0BCDC00F487BA /* MnemonicInteractor.swift in Sources */,
 				C3A836752BC9FC7C89A398C5 /* Mnemonic.swift in Sources */,
 				0DDAF3A52408728600EA9427 /* PKC5.swift in Sources */,
 				9374718ABBF77ACE41A92B18 /* String+MnemonicData.swift in Sources */,
