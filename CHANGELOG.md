@@ -1,3 +1,6 @@
+# 2.2.0
+- MnemonicInteractor. A Class to add better testing abilities and support for a more functional approach
+
 # 2.1.0
 - Swift Package Manager Support
 - swift-crypto and CryptoKit support
