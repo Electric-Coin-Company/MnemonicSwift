@@ -38,7 +38,7 @@ public struct MnemonicInteractor {
     /// - Throws:
     ///   - `MnemonicError.InvalidHexString`:  when an invalid string is given
     ///   - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
-    let mnemonicEnglishString: (String) throws -> String
+    public let mnemonicEnglishString: (String) throws -> String
 
     /// Generate a mnemonic from the given hex string in the given language.
     ///
@@ -49,7 +49,7 @@ public struct MnemonicInteractor {
     /// - Throws:
     ///   - `MnemonicError.InvalidHexString`:  when an invalid string is given
     ///   - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
-    let mnemonicString: (String, MnemonicLanguageType) throws -> String
+    public let mnemonicString: (String, MnemonicLanguageType) throws -> String
 
     /// Generate a deterministic seed string from a Mnemonic String.
     ///
@@ -60,7 +60,7 @@ public struct MnemonicInteractor {
     ///   - language: The language to use. Default is english.
     /// - Returns: hexString representing the deterministic seed bytes
     /// - Throws: `MnemonicError.checksumError` if checksum fails, `MnemonicError.invalidInput` if received input is invalid
-    let deterministicSeedString: (String, Int, String, MnemonicLanguageType) throws -> String
+    public let deterministicSeedString: (String, Int, String, MnemonicLanguageType) throws -> String
 
     /// Generate a deterministic seed bytes from a Mnemonic String.
     ///
@@ -71,7 +71,7 @@ public struct MnemonicInteractor {
     ///   - language: The language to use. Default is english.
     /// - Returns: a byte array representing the deterministic seed bytes
     /// - Throws: `MnemonicError.checksumError` if checksum fails, `MnemonicError.invalidInput` if received input is invalid
-    let deterministicSeedBytes: (String, Int, String, MnemonicLanguageType) throws -> [UInt8]
+    public let deterministicSeedBytes: (String, Int, String, MnemonicLanguageType) throws -> [UInt8]
 
     /// Generate a mnemonic of the given strength and given language.
     ///
@@ -84,7 +84,7 @@ public struct MnemonicInteractor {
     ///  - `MnemonicError.entropyCreationFailed` if random bytes created for entropy fails
     ///  - `MnemonicError.InvalidHexString`  when an invalid string is given
     ///  - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
-    let generateMnemonic: (Int, MnemonicLanguageType) throws -> String
+    public let generateMnemonic: (Int, MnemonicLanguageType) throws -> String
 
     /// Generate a mnemonic of the given strength and given language.
     ///
@@ -96,7 +96,7 @@ public struct MnemonicInteractor {
     ///  - `MnemonicError.entropyCreationFailed` if random bytes created for entropy fails
     ///  - `MnemonicError.InvalidHexString`  when an invalid string is given
     ///  - `MnemonicError.invalidBitString` when the resulting bitstring generates an invalid word index
-    let generateEnglishMnemonic: (Int) throws -> String
+    public let generateEnglishMnemonic: (Int) throws -> String
 
     /// Validate that the given string is a valid mnemonic phrase according to BIP-39
     /// - Parameters:
@@ -106,15 +106,15 @@ public struct MnemonicInteractor {
     ///  - `MnemonicError.invalidWord(word: word)` this phase as a word that's not represented in this library's vocabulary for the detected language.
     ///  - `MnemonicError.unsupportedLanguage` if the given phrase language isn't supported or couldn't be infered
     ///  - `throw MnemonicError.checksumError` if the given phrase has an invalid checksum
-    let validate: (String) throws -> Void
+    public let validate: (String) throws -> Void
 
-    let determineLanguage: ([String]) throws -> MnemonicLanguageType
+    public let determineLanguage: ([String]) throws -> MnemonicLanguageType
 
     /// Change a string into data.
     /// - Parameter string: the string to convert
     /// - Returns: the utf8 encoded data
     /// - Throws: `MnemonicError.invalidInput` if the given String cannot be converted to Data
-    let normalizedString: (String) throws -> Data
+    public let normalizedString: (String) throws -> Data
 
     public init(
         mnemonicEnglishString: @escaping (String) throws -> String = { hexString in
