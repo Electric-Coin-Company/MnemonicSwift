@@ -1,3 +1,8 @@
+# 2.2.2
+- make all variables MnemonicInteractor public 
+
+# 2.2.1 
+- make some variables of the MnemonicInteractor public 
 # 2.2.0
 - MnemonicInteractor. A Class to add better testing abilities and support for a more functional approach
 
