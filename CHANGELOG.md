@@ -1,3 +1,6 @@
+# 2.2.3
+- Issue #29: update swift-crypto to 2.0.5
+- Make language enum codable so it can be persisted if needed 
 # 2.2.2
 - make all variables MnemonicInteractor public 
 
