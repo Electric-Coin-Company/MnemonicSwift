@@ -10,7 +10,7 @@ import Crypto
 import Foundation
 import Security
 
-public enum MnemonicLanguageType {
+public enum MnemonicLanguageType: Codable, Equatable {
     case english
     case chinese
 
