@@ -14,7 +14,7 @@ let package = Package(
             targets: ["MnemonicSwift"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "3.0.0")
+        .package(url: "https://github.com/apple/swift-crypto.git", "2.1.0" ..< "3.0.0")
     ],
     targets: [
         .target(

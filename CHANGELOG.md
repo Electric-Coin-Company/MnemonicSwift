@@ -1,3 +1,5 @@
+# 2.2.4
+- Issue #32 - Update Swift-Crypto to 2.1.0
 # 2.2.3
 - Issue #29: update swift-crypto to 2.0.5
 - Make language enum codable so it can be persisted if needed 
