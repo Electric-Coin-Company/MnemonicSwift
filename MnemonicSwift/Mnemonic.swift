@@ -14,7 +14,7 @@ public enum MnemonicLanguageType: Codable, Equatable {
     case english
     case chinese
 
-    func words() -> [String] {
+    public func words() -> [String] {
         switch self {
         case .english:
             return String.englishMnemonics
